@@ -16,7 +16,7 @@ class Task
    * CREATE
    * @return boolean
    */
-  public function createTask($description) : bool
+  public function createTask($description): bool
   {
     $this->db->query("INSERT INTO task (`description`,`completed`) VALUES (:task, 0)");
     $this->db->bind(':task', $description);
@@ -29,7 +29,7 @@ class Task
    * READ
    * @return array
    */
-  public function selectAll() : array
+  public function selectAll(): array
   {
     $this->db->query("SELECT * FROM task");
     return $this->db->resultSet();
@@ -39,10 +39,11 @@ class Task
    * UPDATE
    * @return boolean
    */
-  public function changeTaskStatus($id) : bool
+  public function changeTaskStatus($id, $completed): bool
   {
-    $this->db->query("UPDATE task SET completed = 1 WHERE id = :id");
+    $this->db->query("UPDATE task SET completed = :completed WHERE id = :id");
     $this->db->bind(':id', $id);
+    $this->db->bind(':completed', !$completed);
     if ($this->db->execute())
       return true;
     return false;
@@ -52,7 +53,7 @@ class Task
    * DELETE
    * @return boolean
    */
-  public function deleteTask($id) : bool
+  public function deleteTask($id): bool
   {
     $this->db->query("DELETE FROM task WHERE id = :id");
     $this->db->bind(':id', $id);

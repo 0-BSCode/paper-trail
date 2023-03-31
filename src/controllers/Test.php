@@ -35,7 +35,7 @@ class Test
   // UPDATE task
   public function markDone($params)
   {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->taskModel->changeTaskStatus($params['id']))
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->taskModel->changeTaskStatus($params['id'], $_POST['complete_status']))
       header('location: ' . URLROOT . '/test/tasks', true, 303);
     else
       die(TASK_NOT_UPDATED);
