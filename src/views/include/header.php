@@ -17,5 +17,6 @@
 			<li><a href="<?= URLROOT; ?>"> Home </a></li>
 			<li><a href="<?= URLROOT; ?>/about"> About </a></li>
 			<li><a href="<?= URLROOT; ?>/test/tasks">Test database</a></li>
+			<li><a href="<?= URLROOT; ?>/auth/signup">Sign up</a></li>
 		</ul>
 	</nav>
