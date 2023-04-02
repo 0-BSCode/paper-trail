@@ -43,6 +43,12 @@ class Auth
                 unset($user['password']);
                 return $user;
             }
+        } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $user = $this->userModel->getById($_SESSION['userId']);
+            if (isset($user['id'])) {
+                unset($_SESSION['password']);
+                return $user;
+            }
         }
         return array();
     }

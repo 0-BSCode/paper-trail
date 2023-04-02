@@ -31,13 +31,11 @@ class User
      * READ BY ID
      * @return user
      */
-    public function getById($id): array|null
+    public function getById($id): array
     {
         $this->db->query("SELECT id, username, email FROM user WHERE id = :id LIMIT 1");
         $this->db->bind(':id', $id);
-        if ($this->db->execute())
-            return $this->db->resultSet();
-        return null;
+        return (array) $this->db->single();
     }
 
     /**
