@@ -25,10 +25,10 @@ function view(string $view, array $data = [], bool $protected = false): void
   $file = APPROOT . '/src/views/' . $view . '.php';
   // Check for view file
   if (is_readable($file)) {
-    if ($protected && !isset($_SESSION['userId'])) {
-      header('location: ' . URLROOT . '/auth/signin');
-    } else {
+    if (!$protected || ($protected && isset($_SESSION['userId']))) {
       require_once $file;
+    } else {
+      view('Auth/signin');
     }
   } else {
     // View does not exist

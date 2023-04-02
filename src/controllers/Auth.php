@@ -1,6 +1,8 @@
 <?php
 namespace Controllers;
 
+session_start();
+
 use \Models\User;
 
 class Auth
@@ -37,10 +39,17 @@ class Auth
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = $this->userModel->getByEmail($_POST['email']);
             if (isset($user['id']) && password_verify($_POST['password'], $user['password'])) {
+                $_SESSION['userId'] = $user['id'];
                 unset($user['password']);
                 return $user;
             }
         }
         return array();
+    }
+
+    public function logout()
+    {
+        session_unset();
+        header('location: ' . URLROOT . '/auth/signin', true, 303);
     }
 }

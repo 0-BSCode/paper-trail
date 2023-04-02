@@ -1,6 +1,8 @@
 <?php
 namespace Controllers;
 
+session_start();
+
 class Index
 {
   public function home()

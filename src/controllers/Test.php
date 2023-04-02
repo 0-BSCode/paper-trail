@@ -1,6 +1,8 @@
 <?php
 namespace Controllers;
 
+session_start();
+
 use \Models\Task;
 
 class Test

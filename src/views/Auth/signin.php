@@ -7,7 +7,6 @@
 </form>
 <div>
     <?php if ($data): ?>
-        <?php print_r($data); ?>
         <p>
             <b>Name: </b>
             <?= $data['username']; ?>
@@ -16,7 +15,5 @@
             <b>Email: </b>
             <?= $data['email']; ?>
         </p>
-    <?php else: ?>
-        <p>No user with those credentials</p>
     <?php endif; ?>
 </div>
