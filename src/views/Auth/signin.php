@@ -15,5 +15,7 @@
             <b>Email: </b>
             <?= $data['email']; ?>
         </p>
+    <?php else: ?>
+        <p>No user with those credentials</p>
     <?php endif; ?>
 </div>
