@@ -14,7 +14,7 @@ class Auth
 
     public function signin()
     {
-        view('Auth/signin');
+        view('Auth/signin', $this->login());
     }
 
     public function signup()
@@ -28,8 +28,19 @@ class Auth
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->userModel->createUser($_POST['username'], $_POST['email'], password_hash($_POST['password'], PASSWORD_DEFAULT)))
             header('location: ' . URLROOT . '/auth/signup', true, 303);
-        // echo 'HEllo';
         else
             die(USER_NOT_CREATED);
+    }
+
+    public function login(): array
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user = $this->userModel->getByEmail($_POST['email']);
+            if (isset($user['id']) && password_verify($_POST['password'], $user['password'])) {
+                unset($user['password']);
+                return $user;
+            }
+        }
+        return array();
     }
 }

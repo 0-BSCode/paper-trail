@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,5 +20,6 @@
 			<li><a href="<?= URLROOT; ?>/about"> About </a></li>
 			<li><a href="<?= URLROOT; ?>/test/tasks">Test database</a></li>
 			<li><a href="<?= URLROOT; ?>/auth/signup">Sign up</a></li>
+			<li><a href="<?= URLROOT; ?>/auth/signin">Sign in</a></li>
 		</ul>
 	</nav>
