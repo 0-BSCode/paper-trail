@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Get URI path.
  * @return string $uri  Sanitized URI
@@ -19,12 +20,16 @@ function getUri(): string
  * @param  array  $data Passing vars to the view
  * @return void
  */
-function view(string $view, array $data = []): void
+function view(string $view, array $data = [], bool $protected = false): void
 {
   $file = APPROOT . '/src/views/' . $view . '.php';
   // Check for view file
   if (is_readable($file)) {
-    require_once $file;
+    if ($protected && !isset($_SESSION['userId'])) {
+      header('location: ' . URLROOT . '/auth/signin');
+    } else {
+      require_once $file;
+    }
   } else {
     // View does not exist
     die('<h1> 404 Page not found </h1>');

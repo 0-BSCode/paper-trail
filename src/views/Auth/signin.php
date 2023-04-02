@@ -7,6 +7,7 @@
 </form>
 <div>
     <?php if ($data): ?>
+        <?php print_r($data); ?>
         <p>
             <b>Name: </b>
             <?= $data['username']; ?>

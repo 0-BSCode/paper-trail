@@ -14,7 +14,7 @@ class Test
   // Render View
   public function tasks()
   {
-    view('TestDb/tasks', $this->getTasks());
+    view('TestDb/tasks', $this->getTasks(), true);
   }
 
   // CREATE new task
