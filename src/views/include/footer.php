@@ -1,3 +1,4 @@
-<script src="<?= URLROOT; ?>/js/main.js"></script>
+<script src="<?= URLROOT; ?>/js/bootstrap.js"></script>
 </body>
+
 </html>
