@@ -34,7 +34,7 @@ class User
      */
     public function getById($user_id): array
     {
-        $this->db->query("SELECT user_id, first_name, last_name, email FROM user WHERE user_id = :user_id LIMIT 1");
+        $this->db->query("SELECT user_id, first_name, last_name, email, role FROM user WHERE user_id = :user_id LIMIT 1");
         $this->db->bind(':user_id', $user_id);
         return (array) $this->db->single();
     }
@@ -45,7 +45,7 @@ class User
      */
     public function getByEmail($email): array
     {
-        $this->db->query("SELECT user_id, first_name, last_name, email, password FROM user WHERE email = :email LIMIT 1");
+        $this->db->query("SELECT user_id, first_name, last_name, email, password, role FROM user WHERE email = :email LIMIT 1");
         $this->db->bind(':email', $email);
         return (array) $this->db->single();
     }
