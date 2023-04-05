@@ -28,6 +28,7 @@ CREATE TABLE
         category_id INT NOT NULL,
         title VARCHAR(100) NOT NULL,
         description TEXT,
+        status ENUM ('draft', 'pending', 'review', 'resolved') NOT NULL DEFAULT 'draft',
         date_created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT PK_Ticket PRIMARY KEY (ticket_id),
@@ -149,7 +150,8 @@ INSERT INTO
               `user_id`, 
               `category_id`, 
               `title`, 
-              `description`, 
+              `description`,
+              `status`,
               `date_created`, 
               `date_updated`
              )
@@ -160,6 +162,7 @@ VALUES
       '1', 
       'Absentee Professor', 
       'Professor has not shown up to class for the past 2 weeks.', 
+      'draft',
       current_timestamp(), 
       current_timestamp()
     ),
@@ -169,6 +172,7 @@ VALUES
       '4', 
       'Tuition Raise', 
       'Tuition has been raised mid-school year.', 
+      'review',
       current_timestamp(), 
       current_timestamp()
     );
