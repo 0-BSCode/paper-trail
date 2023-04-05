@@ -28,7 +28,7 @@ class Auth
     // CREATE new user
     public function register()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->userModel->createUser($_POST['username'], $_POST['email'], password_hash($_POST['password'], PASSWORD_DEFAULT)))
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->userModel->createUser($_POST['first_name'], $_POST['last_name'], $_POST['email'], password_hash($_POST['password'], PASSWORD_DEFAULT)))
             header('location: ' . URLROOT . '/auth/signup', true, 303);
         else
             die(USER_NOT_CREATED);
@@ -38,14 +38,14 @@ class Auth
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = $this->userModel->getByEmail($_POST['email']);
-            if (isset($user['id']) && password_verify($_POST['password'], $user['password'])) {
-                $_SESSION['userId'] = $user['id'];
+            if (isset($user['user_id']) && password_verify($_POST['password'], $user['password'])) {
+                $_SESSION['user_id'] = $user['user_id'];
                 unset($user['password']);
                 return $user;
             }
         } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $user = $this->userModel->getById($_SESSION['userId']);
-            if (isset($user['id'])) {
+            $user = $this->userModel->getById($_SESSION['user_id']);
+            if (isset($user['user_id'])) {
                 unset($_SESSION['password']);
                 return $user;
             }
