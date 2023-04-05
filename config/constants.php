@@ -4,7 +4,7 @@ define('APPROOT', dirname(dirname(__FILE__)));
 // URL Root
 define('URLROOT', 'http://localhost/php-mvc');
 // Site Name
-define('SITENAME', 'PHP Basic MVC');
+define('SITENAME', 'Paper Trail');
 
 // CRUD Operations' Alert Messages
 define('TASK_NOT_CREATED', 'Something went wrong creating new task');
