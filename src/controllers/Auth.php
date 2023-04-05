@@ -40,6 +40,7 @@ class Auth
             $user = $this->userModel->getByEmail($_POST['email']);
             if (isset($user['user_id']) && password_verify($_POST['password'], $user['password'])) {
                 $_SESSION['user_id'] = $user['user_id'];
+                $_SESSION['role'] = $user['role'];
                 unset($user['password']);
                 return $user;
             }

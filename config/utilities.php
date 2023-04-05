@@ -25,7 +25,10 @@ function view(string $view, array $data = [], bool $protected = false): void
   $file = APPROOT . '/src/views/' . $view . '.php';
   // Check for view file
   if (is_readable($file)) {
-    if (!$protected || ($protected && isset($_SESSION['user_id']))) {
+    if (
+      (!$protected || ($protected && isset($_SESSION['user_id']))) &&
+      (!isset($data['role']) || ($data['role']) && $data['role'] === $_SESSION['role'])
+    ) {
       require_once $file;
     } else {
       view('Auth/signin');
