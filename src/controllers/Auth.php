@@ -44,7 +44,7 @@ class Auth
                 unset($user['password']);
                 return $user;
             }
-        } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        } else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_SESSION['user_id'])) {
             $user = $this->userModel->getById($_SESSION['user_id']);
             if (isset($user['user_id'])) {
                 unset($_SESSION['password']);
