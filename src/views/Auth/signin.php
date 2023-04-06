@@ -1,6 +1,6 @@
 <?php require_once APPROOT . '/src/views/include/header.php'; ?>
 <main class="h-100 d-flex flex-column px-5 justify-content-center align-items-center">
-    <h1>Search User</h1>
+    <h1>Sign in</h1>
     <form action="<?= URLROOT; ?>/auth/signin" method="post">
         <div class="form-group">
             <label for="email">Email address</label>
@@ -16,7 +16,7 @@
         <div class="d-flex flex-column align-items-center">
             <button type="submit" class="btn btn-primary">Log in</button>
             <p>
-                Already have an account?
+                No account yet?
                 <a href="<?= URLROOT; ?>/auth/signup">Register</a>
             </p>
         </div>
