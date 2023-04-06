@@ -3,7 +3,7 @@ namespace Models;
 
 use \Models\Database;
 
-class User
+class UserModel
 {
     private $db;
 

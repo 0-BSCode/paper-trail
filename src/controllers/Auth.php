@@ -3,7 +3,7 @@ namespace Controllers;
 
 session_start();
 
-use \Models\User;
+use \Models\UserModel;
 
 class Auth
 {
@@ -11,7 +11,7 @@ class Auth
 
     public function __construct()
     {
-        $this->userModel = new User;
+        $this->userModel = new UserModel;
     }
 
     public function signin()
