@@ -30,7 +30,7 @@ class UserModel
 
     /**
      * READ BY ID
-     * @return user
+     * @return usermodel
      */
     public function getById($user_id): array
     {
@@ -41,7 +41,7 @@ class UserModel
 
     /**
      * READ BY EMAIL
-     * @return user
+     * @return usermodel
      */
     public function getByEmail($email): array
     {
