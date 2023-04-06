@@ -22,16 +22,20 @@ function getUri(): string
  */
 function view(string $view, array $data = [], bool $protected = false): void
 {
+  // session_start();
   $file = APPROOT . '/src/views/' . $view . '.php';
   // Check for view file
   if (is_readable($file)) {
-    if (
+    if (($view === 'Auth/signin' || $view === 'Auth/signup') && isset($_SESSION['user_id'])) {
+      header("Location: " . URLROOT);
+
+    } else if (
       (!$protected || ($protected && isset($_SESSION['user_id']))) &&
       (!isset($data['role']) || ($data['role']) && $data['role'] === $_SESSION['role'])
     ) {
       require_once $file;
     } else {
-      view('Auth/signin');
+      header("Location: " . URLROOT . "/auth/signin");
     }
   } else {
     // View does not exist
