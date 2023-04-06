@@ -3,7 +3,7 @@ namespace Models;
 
 use \Models\Database;
 
-class Ticket
+class TicketModel
 {
     private $db;
 
@@ -13,12 +13,31 @@ class Ticket
     }
 
     /**
+     * GET ALL
+     * @return array
+     */
+    public function getAll(): array
+    {
+        $this->db->query("SELECT * 
+                        FROM ticket t
+                        INNER JOIN category c
+                        ON t.category_id = c.category_id"
+        );
+        return $this->db->resultSet();
+    }
+
+    /**
      * GET BY USER ID
      * @return array
      */
     public function getByUser($user_id): array
     {
-        $this->db->query("SELECT * FROM ticket WHERE user user_id = :user_id");
+        $this->db->query("SELECT * 
+                            FROM ticket t
+                            INNER JOIN category c
+                            ON t.category_id = c.category_id
+                            WHERE user_id = :user_id"
+        );
         $this->db->bind(":user_id", $user_id);
         return $this->db->resultSet();
     }

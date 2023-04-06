@@ -1,7 +1,7 @@
 <?php
 namespace Controllers;
 
-session_start();
+@session_start();
 
 use \Models\UserModel;
 

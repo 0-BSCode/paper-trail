@@ -1,13 +1,21 @@
 <?php
 namespace Controllers;
 
-session_start();
+use \Controllers\Ticket;
+
+@session_start();
 
 class Index
 {
+  private $ticketController;
+  public function __construct()
+  {
+    $this->ticketController = new Ticket;
+  }
+
   public function home()
   {
-    view('Index/home', [], true);
+    view('Index/home', $this->ticketController->getTasks(), true);
   }
 
   public function about()
