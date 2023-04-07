@@ -44,6 +44,19 @@ class TicketModel
         return $this->db->resultSet();
     }
 
+    public function getOne($ticket_id): array
+    {
+        $this->db->query("SELECT * 
+                            FROM ticket t
+                            INNER JOIN category c
+                            ON t.category_id = c.category_id
+                            WHERE ticket_id = :ticket_id
+                            ORDER BY t.ticket_id ASC"
+        );
+        $this->db->bind(":ticket_id", $ticket_id);
+        return (array) $this->db->single();
+    }
+
     /**
      * CREATE
      * @return boolean

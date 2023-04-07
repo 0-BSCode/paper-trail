@@ -15,7 +15,7 @@ class Index
 
   public function home()
   {
-    view('Index/home', $this->ticketController->getTasks(), true);
+    view('Index/home', $this->ticketController->getTickets(), true);
   }
 
   public function about()

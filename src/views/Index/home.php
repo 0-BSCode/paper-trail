@@ -11,7 +11,7 @@
     <section class="flex-grow-1">
         <h1>Grievances</h1>
         <a class="btn btn-primary" type="button" href="<?= URLROOT; ?>/ticket/create">Create</a>
-        <table class="table">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -28,8 +28,10 @@
                             <th scope="row">
                                 <?= $ticket->ticket_id; ?>
                             </th>
-                            <td>
-                                <?= $ticket->title; ?>
+                            <td class="card">
+                                <a class="stretched-link" href="<?= URLROOT; ?>/ticket/<?= $ticket->ticket_id; ?>/view-ticket">
+                                    <?= $ticket->title; ?>
+                                </a>
                             </td>
                             <td>
                                 <?= $ticket->name; ?>
@@ -40,6 +42,7 @@
                             <td>
                                 <?= $ticket->date_created; ?>
                             </td>
+                            <!-- <a class="stretched-link" href="<?= URLROOT; ?>/tickets/<?= $ticket->ticket_id; ?>"></a> -->
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

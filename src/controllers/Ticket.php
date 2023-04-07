@@ -18,7 +18,12 @@ class Ticket
 
     public function tickets()
     {
-        view("Tickets/index", $this->getTasks(), true);
+        view("Tickets/index", $this->getTickets(), true);
+    }
+
+    public function viewTicket($params)
+    {
+        view("Tickets/view", $this->getTicket($params['id']), true);
     }
 
     public function create()
@@ -26,13 +31,18 @@ class Ticket
         view("Tickets/create", $this->getCategories(), true);
     }
 
-    public function getTasks(): array
+    public function getTickets(): array
     {
         if ($_SESSION['role'] === 'organization') {
             return $this->ticketModel->getAll();
         } else {
             return $this->ticketModel->getByUser($_SESSION['user_id']);
         }
+    }
+
+    public function getTicket($ticket_id)
+    {
+        return $this->ticketModel->getOne($ticket_id);
     }
 
     public function getCategories(): array
