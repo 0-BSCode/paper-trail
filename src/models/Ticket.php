@@ -21,7 +21,8 @@ class TicketModel
         $this->db->query("SELECT * 
                         FROM ticket t
                         INNER JOIN category c
-                        ON t.category_id = c.category_id"
+                        ON t.category_id = c.category_id
+                        ORDER BY t.ticket_id ASC"
         );
         return $this->db->resultSet();
     }
@@ -36,7 +37,8 @@ class TicketModel
                             FROM ticket t
                             INNER JOIN category c
                             ON t.category_id = c.category_id
-                            WHERE user_id = :user_id"
+                            WHERE user_id = :user_id
+                            ORDER BY t.ticket_id ASC"
         );
         $this->db->bind(":user_id", $user_id);
         return $this->db->resultSet();
