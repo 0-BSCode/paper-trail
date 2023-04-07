@@ -14,14 +14,18 @@
 
 <body>
 	<?php if (isset($_SESSION['user_id'])): ?>
-		<nav>
+		<nav class="d-flex justify-content-between align-items-start">
+			<ul class="list-group d-flex flex-row">
+				<?php if ($_SESSION['role'] === 'student'): ?>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>"> Home </a></li>
+				<?php else: ?>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>">Grievances</a></li>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>">Contacts</a></li>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>">Documents</a></li>
+				<?php endif; ?>
+			</ul>
 			<ul>
-				<li><a href="<?= URLROOT; ?>"> Home </a></li>
-				<li><a href="<?= URLROOT; ?>/about"> About </a></li>
-				<li><a href="<?= URLROOT; ?>/test/tasks">Test database</a></li>
-				<li><a href="<?= URLROOT; ?>/auth/signup">Sign up</a></li>
-				<li><a href="<?= URLROOT; ?>/auth/signin">Sign in</a></li>
-				<li><a href="<?= URLROOT; ?>/auth/logout">Log out</a></li>
+				<li class="list-group-item"><a href="<?= URLROOT; ?>/auth/logout">Log out</a></li>
 			</ul>
 		</nav>
 	<?php endif; ?>

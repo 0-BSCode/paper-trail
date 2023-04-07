@@ -18,6 +18,12 @@ class Ticket
         view("Tickets/index", $this->getTasks(), true);
     }
 
+    public function create()
+    {
+        view("Tickets/create", [], true);
+    }
+
+
     public function getTasks(): array
     {
         if ($_SESSION['role'] === 'organization') {
