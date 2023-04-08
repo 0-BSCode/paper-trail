@@ -42,7 +42,6 @@
                             <td>
                                 <?= $ticket->date_created; ?>
                             </td>
-                            <!-- <a class="stretched-link" href="<?= URLROOT; ?>/tickets/<?= $ticket->ticket_id; ?>"></a> -->
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
