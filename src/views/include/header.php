@@ -15,7 +15,7 @@
 <body>
 	<?php if (isset($_SESSION['user_id'])): ?>
 		<nav class="d-flex justify-content-between align-items-start">
-			<ul class="list-group d-flex flex-row">
+			<ul class="list-group d-flex flex-row list-group-flush">
 				<?php if ($_SESSION['role'] === 'student'): ?>
 					<li class="list-group-item"><a href="<?= URLROOT; ?>"> Home </a></li>
 				<?php else: ?>
@@ -24,7 +24,10 @@
 					<li class="list-group-item"><a href="<?= URLROOT; ?>">Documents</a></li>
 				<?php endif; ?>
 			</ul>
-			<ul>
+			<ul class="list-group d-flex flex-row list-group-flush">
+				<li class="list-group-item">
+					<?= $_SESSION['user_name']; ?>
+				</li>
 				<li class="list-group-item"><a href="<?= URLROOT; ?>/auth/logout">Log out</a></li>
 			</ul>
 		</nav>
