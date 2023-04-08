@@ -74,12 +74,29 @@ class TicketModel
     }
 
     /**
+     * UODATE
+     * @return boolean
+     */
+    public function updateTicket($ticket_id, $category_id, $title, $description)
+    {
+        $this->db->query("UPDATE ticket SET title = :title, category_id = :category_id, description = :description WHERE ticket_id = :ticket_id");
+        $this->db->bind(":category_id", $category_id);
+        $this->db->bind(":title", $title);
+        $this->db->bind(":description", $description);
+        $this->db->bind(":ticket_id", $ticket_id);
+        if ($this->db->execute())
+            return true;
+        return false;
+    }
+
+    /**
      * UPDATE
      * @return boolean
      */
     public function changeTicketStatus($ticket_id, $status): bool
     {
-        $this->db->query("UPDATE ticket SET status = :status WHERE id = :id");
+        $this->db->query("UPDATE ticket SET status = :status WHERE ticket_id = :ticket_id");
+        $this->db->bind(":ticket_id", $ticket_id);
         $this->db->bind(":status", $status);
         if ($this->db->execute())
             return true;

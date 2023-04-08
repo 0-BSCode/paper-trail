@@ -26,6 +26,11 @@ class Ticket
         view("Tickets/view", $this->getTicket($params['id']), true);
     }
 
+    public function editTicket($params)
+    {
+        view("Tickets/update", ["ticket" => $this->getTicket($params['id']), "categories" => $this->getCategories()], true);
+    }
+
     public function create()
     {
         view("Tickets/create", $this->getCategories(), true);
@@ -56,5 +61,13 @@ class Ticket
             header("Location: " . URLROOT);
         else
             die(TICKET_NOT_CREATED);
+    }
+
+    public function updateTicket($params)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->updateTicket($params['id'], $_POST['category_id'], $_POST['title'], $_POST['description']))
+            header("Location: " . URLROOT . "/ticket/" . $params['id'] . "/view-ticket");
+        else
+            die(TICKET_NOT_UPDATED);
     }
 }
