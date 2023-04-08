@@ -11,17 +11,21 @@
     <section class="flex-grow-1">
         <h1>Grievances</h1>
         <a class="btn btn-primary" type="button" href="<?= URLROOT; ?>/ticket/create">Create</a>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Created At</th>
-                </tr>
-            </thead>
-            <?php if ($data): ?>
+        <?php if ($data): ?>
+
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Status</th>
+                        <?php if ($_SESSION['role'] === 'organization'): ?>
+                            <th scope="col">Created By</th>
+                        <?php endif; ?>
+                        <th scope="col">Created At</th>
+                    </tr>
+                </thead>
                 <tbody>
                     <?php foreach ($data as $ticket): ?>
                         <tr>
@@ -39,16 +43,21 @@
                             <td>
                                 <?= $ticket->status; ?>
                             </td>
+                            <?php if ($_SESSION['role'] === 'organization'): ?>
+                                <td scope="col">
+                                    <?= $ticket->first_name . ' ' . $ticket->last_name; ?>
+                                    </th>
+                                <?php endif; ?>
                             <td>
                                 <?= $ticket->date_created; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
-            <?php else: ?>
-                <p>No grievances filed.</p>
-            <?php endif; ?>
-        </table>
+            </table>
+        <?php else: ?>
+            <p>No grievances filed.</p>
+        <?php endif; ?>
     </section>
 </main>
 

@@ -22,6 +22,8 @@ class TicketModel
                         FROM ticket t
                         INNER JOIN category c
                         ON t.category_id = c.category_id
+                        INNER JOIN user u
+                        ON t.user_id = u.user_id
                         ORDER BY t.ticket_id ASC"
         );
         return $this->db->resultSet();
