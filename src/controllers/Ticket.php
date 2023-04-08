@@ -5,15 +5,18 @@ namespace Controllers;
 
 use \Models\TicketModel;
 use \Models\CategoryModel;
+use \Models\CommentModel;
 
 class Ticket
 {
     private $ticketModel;
     private $categoryModel;
+    private $commentModel;
     public function __construct()
     {
         $this->ticketModel = new TicketModel;
         $this->categoryModel = new CategoryModel;
+        $this->commentModel = new CommentModel;
     }
 
     public function tickets()
@@ -23,12 +26,12 @@ class Ticket
 
     public function viewTicket($params)
     {
-        view("Tickets/view", $this->getTicket($params['id']), true);
+        view("Tickets/view", ["ticket" => $this->getTicket($params['id']), "comments" => $this->getComments($params['id'])], true);
     }
 
     public function editTicket($params)
     {
-        view("Tickets/update", ["ticket" => $this->getTicket($params['id']), "categories" => $this->getCategories()], true);
+        view("Tickets/update", ["ticket" => $this->getTicket($params['id']), "categories" => $this->getCategories(), "comments" => $this->getComments($params['id'])], true);
     }
 
     public function create()
@@ -53,6 +56,11 @@ class Ticket
     public function getCategories(): array
     {
         return $this->categoryModel->getAll();
+    }
+
+    public function getComments($ticket_id): array
+    {
+        return $this->commentModel->getByTicket($ticket_id);
     }
 
     public function createTicket()

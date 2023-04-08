@@ -18,3 +18,6 @@ define('USER_NOT_FOUND', 'Something went wrong finding user');
 // Ticket CRUD
 define('TICKET_NOT_CREATED', 'Something went wrong creating new ticket');
 define('TICKET_NOT_UPDATED', 'Something went wrong updating ticket');
+
+// Comment CRUD
+define('COMMENT_NOT_CREATED', 'Something went wrong creating new comment');
