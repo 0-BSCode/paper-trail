@@ -40,10 +40,14 @@ class TicketModel
      */
     public function getByUser($user_id): array
     {
-        $this->db->query("SELECT * 
+        $this->db->query("SELECT t.*,
+                                 c.name category_name,
+                                 s.name status_name, s.description status_description 
                             FROM ticket t
                             INNER JOIN category c
                             ON t.category_id = c.category_id
+                            INNER JOIN status s
+                            ON t.status_id = s.status_id
                             WHERE user_id = :user_id
                             ORDER BY t.ticket_id ASC"
         );
