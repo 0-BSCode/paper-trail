@@ -37,7 +37,6 @@ CREATE TABLE
         status_id INT NOT NULL,
         title VARCHAR(100) NOT NULL,
         description TEXT,
-        status ENUM ('draft', 'pending', 'review', 'raised', 'resolved') NOT NULL DEFAULT 'draft',
         date_created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT PK_Ticket PRIMARY KEY (ticket_id),
