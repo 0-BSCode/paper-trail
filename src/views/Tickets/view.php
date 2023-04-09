@@ -29,6 +29,15 @@
                 <?php if ($_SESSION['role'] === 'student'): ?>
                     <a type="button" class="btn btn-primary"
                         href="<?= URLROOT; ?>/ticket/<?= $data['ticket']['ticket_id']; ?>/edit-ticket">Edit</a>
+                    <form class="mt-3">
+                        <label class="form-label">Status</label>
+                        <select class="form-select form-select-md mb-3 text-uppercase" name="status"
+                            aria-label=".form-select-lg example" disabled>
+                            <option>
+                                <?= $data['ticket']['status']; ?>
+                            </option>
+                        </select>
+                    </form>
                 <?php else: ?>
                     <form class="mb-3" action="<?= URLROOT; ?>/ticket/<?= $data['ticket']['ticket_id'] ?>/update-ticket-status"
                         method="POST">
