@@ -16,7 +16,7 @@
                         <label class="form-label">Category</label>
                         <select class="form-select form-select-md mb-3" name="category_id"
                             aria-label=".form-select-lg example" disabled>
-                            <option selected value="<?= $data['ticket']['category_id']; ?>"><?= $data['ticket']['name']; ?>
+                            <option selected value="<?= $data['ticket']['category_id']; ?>"><?= $data['ticket']['category_name']; ?>
                             </option>
                         </select>
                     </div>
@@ -34,7 +34,7 @@
                         <select class="form-select form-select-md mb-3 text-uppercase" name="status"
                             aria-label=".form-select-lg example" disabled>
                             <option>
-                                <?= $data['ticket']['status']; ?>
+                                <?= $data['ticket']['status_name']; ?>
                             </option>
                         </select>
                     </form>
@@ -42,11 +42,11 @@
                     <form class="mb-3" action="<?= URLROOT; ?>/ticket/<?= $data['ticket']['ticket_id'] ?>/update-ticket-status"
                         method="POST">
                         <label class="form-label">Status</label>
-                        <select class="form-select form-select-md mb-3 text-uppercase" name="status"
+                        <select class="form-select form-select-md mb-3 text-uppercase" name="status_id"
                             aria-label=".form-select-lg example">
                             <?php foreach ($data['statuses'] as $status): ?>
-                                <option class="text-uppercase" value="<?= $status; ?>" <?php echo ($status === $data['ticket']['status']) ? 'selected' : ''; ?>>
-                                    <?= $status; ?>
+                                <option class="text-uppercase" value="<?= $status->status_id; ?>" <?php echo ($status->name === $data['ticket']['status_name']) ? 'selected' : ''; ?>>
+                                    <?= $status->name; ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>

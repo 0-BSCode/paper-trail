@@ -6,27 +6,26 @@ namespace Controllers;
 use \Models\TicketModel;
 use \Models\CategoryModel;
 use \Models\CommentModel;
+use \Models\StatusModel;
 
 class Ticket
 {
     private $ticketModel;
     private $categoryModel;
+    private $statusModel;
     private $commentModel;
+
     public function __construct()
     {
         $this->ticketModel = new TicketModel;
         $this->categoryModel = new CategoryModel;
         $this->commentModel = new CommentModel;
-    }
-
-    public function tickets()
-    {
-        view("Tickets/index", $this->getTickets(), true);
+        $this->statusModel = new StatusModel;
     }
 
     public function viewTicket($params)
     {
-        view("Tickets/view", ["ticket" => $this->getTicket($params['id']), "comments" => $this->getComments($params['id']), "statuses" => ["draft", "pending", "review", "resolved"]], true);
+        view("Tickets/view", ["ticket" => $this->getTicket($params['id']), "comments" => $this->getComments($params['id']), "statuses" => $this->statusModel->getAll()], true);
     }
 
     public function editTicket($params)
@@ -81,7 +80,7 @@ class Ticket
 
     public function updateTicketStatus($params)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->updateTicketStatus($params['id'], $_POST['status']))
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->updateTicketStatus($params['id'], $_POST['status_id']))
             header("Location: " . URLROOT . "/ticket/" . $params['id'] . "/view-ticket");
         else
             die(TICKET_NOT_UPDATED);

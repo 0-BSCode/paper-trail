@@ -12,7 +12,6 @@
         <h1>Grievances</h1>
         <a class="btn btn-primary" type="button" href="<?= URLROOT; ?>/ticket/create">Create</a>
         <?php if ($data): ?>
-
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -27,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($data as $ticket): ?>
+                    <?php foreach ($data['ticket'] as $ticket): ?>
                         <tr>
                             <th scope="row">
                                 <?= $ticket->ticket_id; ?>
@@ -38,10 +37,10 @@
                                 </a>
                             </td>
                             <td>
-                                <?= $ticket->name; ?>
+                                <?= $ticket->category_name; ?>
                             </td>
                             <td>
-                                <?= $ticket->status; ?>
+                                <?= $ticket->status_name; ?>
                             </td>
                             <?php if ($_SESSION['role'] === 'organization'): ?>
                                 <td scope="col">
@@ -60,5 +59,4 @@
         <?php endif; ?>
     </section>
 </main>
-
 <?php require_once APPROOT . '/src/views/include/footer.php'; ?>
