@@ -22,18 +22,28 @@ CREATE TABLE
     );
 
 CREATE TABLE
+    IF NOT EXISTS `status` (
+        status_id INT NOT NULL AUTO_INCREMENT,
+        name VARCHAR(20) NOT NULL,
+        description VARCHAR(100) NOT NULL,
+        CONSTRAINT PK_Status PRIMARY KEY (status_id)
+    );
+
+CREATE TABLE
     IF NOT EXISTS `ticket` (
         ticket_id INT NOT NULL AUTO_INCREMENT,
         user_id INT NOT NULL,
         category_id INT NOT NULL,
+        status_id INT NOT NULL,
         title VARCHAR(100) NOT NULL,
         description TEXT,
-        status ENUM ('draft', 'pending', 'review', 'resolved') NOT NULL DEFAULT 'draft',
+        status ENUM ('draft', 'pending', 'review', 'raised', 'resolved') NOT NULL DEFAULT 'draft',
         date_created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         date_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT PK_Ticket PRIMARY KEY (ticket_id),
         CONSTRAINT FK_Ticket_User FOREIGN KEY (user_id) REFERENCES user (user_id),
-        CONSTRAINT FK_Ticket_Category FOREIGN KEY (category_id) REFERENCES category (category_id)
+        CONSTRAINT FK_Ticket_Category FOREIGN KEY (category_id) REFERENCES category (category_id),
+        CONSTRAINT FK_Ticket_Status FOREIGN KEY (status_id) REFERENCES status (status_id)
     );
 
 CREATE TABLE
@@ -86,6 +96,37 @@ VALUES
     ), (
         4,
         'Finance'
+    );
+
+-- SAMPLE DATA FOR STATUS TABLE -- 
+INSERT INTO
+    `status` (
+        `status_id`,
+        `name`,
+        `description`
+    )
+VALUES
+    (
+        1,
+        'draft',
+        'Grievance was created but not submitted to the organization'
+    ), (
+        2,
+        'pending',
+        'Grievance was submitted but not viewed by an organization member'
+    ), (
+        3,
+        'review',
+        'Grievance has been viewed by an organization member'
+    ), (
+        4,
+        'raised',
+        'Grievance has been raised to proper authority by organization member'
+    ),
+    (
+        5,
+        'resolved',
+        'Grievance has been marked as resolved by organization member'
     );
 
 -- SAMPLE DATA FOR USER TABLE -- 
@@ -141,6 +182,13 @@ VALUES
         '$2y$10$DcQ27rl7rTaVC4JBFMmx9eW.2eEH5jrQyV.Rf3VVKuKyhw7ASghJ.',
         'student@usc.edu.ph',
         'student'
+    ), (
+        7,
+        'Student2',
+        'User2',
+        '$2y$10$Uf/YLMFUR2HoXTrNx.yj9Oe/z.ldX8akP3wBpRfhxlmoqbW/DWARe',
+        'student2@usc.edu.ph',
+        'student2'
     );
 
 -- SAMPLE DATA FOR TICKET TABLE -- 
@@ -148,10 +196,10 @@ INSERT INTO
     `ticket` (
               `ticket_id`, 
               `user_id`, 
-              `category_id`, 
+              `category_id`,
+              `status_id`,
               `title`, 
               `description`,
-              `status`,
               `date_created`, 
               `date_updated`
              )
@@ -159,20 +207,30 @@ VALUES
     (
       1,
       '6',
-      '1', 
+      '1',
+      '2',
       'Absentee Professor', 
       'Professor has not shown up to class for the past 2 weeks.', 
-      'draft',
       current_timestamp(), 
       current_timestamp()
     ),
     (
       2, 
       '6', 
-      '4', 
+      '4',
+      '2',
       'Tuition Raise', 
       'Tuition has been raised mid-school year.', 
-      'review',
+      current_timestamp(), 
+      current_timestamp()
+    ),
+    (
+      3, 
+      '7', 
+      '1',
+      '4',
+      'Teacher has not given grade', 
+      'My professor has not released our grades yet, so I am unable to enroll in my next majors.', 
       current_timestamp(), 
       current_timestamp()
     );
