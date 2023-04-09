@@ -75,7 +75,7 @@
             <?php endforeach; ?>
             <form class="d-flex flex-column rounded-3 border me-5 p-3" action="<?= URLROOT; ?>/comment/create-comment"
                 method="POST">
-                <input type="hidden" name="ticket_id" value="<?= $comment->ticket_id; ?>">
+                <input type="hidden" name="ticket_id" value="<?= $data['ticket']['ticket_id']; ?>">
                 <div class="d-flex gap-3">
                     <p>
                         P
