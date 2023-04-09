@@ -81,7 +81,7 @@ class TicketModel
      */
     public function updateTicket($ticket_id, $category_id, $title, $description)
     {
-        $this->db->query("UPDATE ticket SET title = :title, category_id = :category_id, description = :description WHERE ticket_id = :ticket_id");
+        $this->db->query("UPDATE ticket SET title = :title, category_id = :category_id, description = :description, date_updated = current_timestamp() WHERE ticket_id = :ticket_id");
         $this->db->bind(":category_id", $category_id);
         $this->db->bind(":title", $title);
         $this->db->bind(":description", $description);
