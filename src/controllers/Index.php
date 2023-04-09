@@ -17,9 +17,4 @@ class Index
   {
     view('Index/home', $this->ticketController->getTickets(), true);
   }
-
-  public function about()
-  {
-    view('Index/about');
-  }
 }
