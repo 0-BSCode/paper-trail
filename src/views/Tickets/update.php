@@ -48,9 +48,25 @@
             <h2>
                 Comments
             </h2>
-            <p>
-                No comments yet.
-            </p>
+            <?php foreach ($data['comments'] as $comment): ?>
+                <form class="d-flex flex-column rounded-3 border me-5 p-3">
+                    <div class="d-flex gap-3">
+                        <p>
+                            P
+                        </p>
+                        <div class="d-flex flex-column">
+                            <p>
+                                <?= $comment->first_name . ' ' . $comment->last_name; ?>
+                            </p>
+                            <p>
+                                <?= $comment->date_created; ?>
+                            </p>
+                        </div>
+                    </div>
+                    <textarea class="form-control" name="description" id="description" rows="4"
+                        readonly><?= $comment->description; ?></textarea>
+                </form>
+            <?php endforeach; ?>
         </div>
     </section>
 </main>
