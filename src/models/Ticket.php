@@ -95,7 +95,7 @@ class TicketModel
      * UPDATE
      * @return boolean
      */
-    public function changeTicketStatus($ticket_id, $status): bool
+    public function updateTicketStatus($ticket_id, $status): bool
     {
         $this->db->query("UPDATE ticket SET status = :status WHERE ticket_id = :ticket_id");
         $this->db->bind(":ticket_id", $ticket_id);

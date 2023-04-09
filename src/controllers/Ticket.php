@@ -26,7 +26,7 @@ class Ticket
 
     public function viewTicket($params)
     {
-        view("Tickets/view", ["ticket" => $this->getTicket($params['id']), "comments" => $this->getComments($params['id'])], true);
+        view("Tickets/view", ["ticket" => $this->getTicket($params['id']), "comments" => $this->getComments($params['id']), "statuses" => ["draft", "pending", "review", "resolved"]], true);
     }
 
     public function editTicket($params)
@@ -74,6 +74,14 @@ class Ticket
     public function updateTicket($params)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->updateTicket($params['id'], $_POST['category_id'], $_POST['title'], $_POST['description']))
+            header("Location: " . URLROOT . "/ticket/" . $params['id'] . "/view-ticket");
+        else
+            die(TICKET_NOT_UPDATED);
+    }
+
+    public function updateTicketStatus($params)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->updateTicketStatus($params['id'], $_POST['status']))
             header("Location: " . URLROOT . "/ticket/" . $params['id'] . "/view-ticket");
         else
             die(TICKET_NOT_UPDATED);
