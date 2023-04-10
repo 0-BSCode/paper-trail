@@ -18,7 +18,7 @@
                                 <?php elseif ($update->action_type === 'UPDATE'): ?>
                                     updated a
                                 <?php elseif ($update->action_type === 'COMMENT'): ?>
-                                    commented on your
+                                    commented on
                                 <?php elseif ($update->action_type === 'STATUS'): ?>
                                     updated the status of your
                                 <?php endif; ?>
