@@ -31,18 +31,21 @@
                         href="<?= URLROOT; ?>/ticket/<?= $data['ticket']['ticket_id']; ?>/edit-ticket">Edit</a>
                     <form class="mt-3">
                         <label class="form-label">Status</label>
-                        <select class="form-select form-select-md mb-3 text-uppercase" name="status"
+                        <select class="form-select form-select-md text-uppercase" name="status"
                             aria-label=".form-select-lg example" disabled>
                             <option>
                                 <?= $data['ticket']['status_name']; ?>
                             </option>
                         </select>
+                        <small id="statusHelpBlock" class="form-text text-muted">
+                            <?= $data['ticket']['status_description']; ?>
+                        </small>
                     </form>
                 <?php else: ?>
                     <form class="mb-3" action="<?= URLROOT; ?>/ticket/<?= $data['ticket']['ticket_id'] ?>/update-ticket-status"
                         method="POST">
                         <label class="form-label">Status</label>
-                        <select class="form-select form-select-md mb-3 text-uppercase" name="status_id"
+                        <select class="form-select form-select-md text-uppercase" name="status_id"
                             aria-label=".form-select-lg example">
                             <?php foreach ($data['statuses'] as $status): ?>
                                 <option class="text-uppercase" value="<?= $status->status_id; ?>" <?php echo ($status->name === $data['ticket']['status_name']) ? 'selected' : ''; ?>>
@@ -50,7 +53,10 @@
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <button type="submit" class="btn btn-primary">
+                        <small id="statusHelpBlock" class="form-text text-muted">
+                            <?= $data['ticket']['status_description']; ?>
+                        </small>
+                        <button type="submit" class="btn btn-primary d-block mt-3">
                             Update
                         </button>
                     </form>
