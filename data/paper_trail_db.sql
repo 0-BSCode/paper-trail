@@ -76,6 +76,45 @@ CREATE TABLE
         CONSTRAINT PK_Contact PRIMARY KEY (contact_id)
     );
 
+-- TABLES FOR NOTIFICATION SYSTEM --
+CREATE TABLE
+    IF NOT EXISTS `notification_entity_type` (
+        notification_entity_type_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+        entity ENUM ('TICKET', 'COMMENT') NOT NULL DEFAULT 'TICKET',
+        action_type ENUM ('CREATE', 'UPDATE', 'DELETE') NOT NULL,
+        CONSTRAINT PK_NotificationEntityType PRIMARY KEY (notification_entity_type_id)
+    );
+
+CREATE TABLE
+    IF NOT EXISTS `notification_object` (
+        notification_object_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+        notification_entity_type_id INT UNSIGNED NOT NULL,
+        entity_id INT UNSIGNED NOT NULL,
+        date_created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        CONSTRAINT PK_NotificationObject PRIMARY KEY (notification_object_id),
+        CONSTRAINT PK_NotificationObject_NotificationEntityType FOREIGN KEY (notification_entity_type_id) REFERENCES notification_entity_type (notification_entity_type_id)
+    );
+
+CREATE TABLE
+    IF NOT EXISTS `notification` (
+        notification_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+        notification_object_id INT UNSIGNED NOT NULL,
+        notifier_id INT NOT NULL,
+        CONSTRAINT PK_Notification PRIMARY KEY (notification_id),
+        CONSTRAINT FK_Notification_NotificationObject FOREIGN KEY (notification_object_id) REFERENCES notification_object (notification_object_id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT FK_Notification_User FOREIGN KEY (notifier_id) REFERENCES user (user_id) ON DELETE NO ACTION ON UPDATE NO ACTION
+    );
+
+CREATE TABLE
+    IF NOT EXISTS `notification_change` (
+        notification_change_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+        notification_object_id INT UNSIGNED NOT NULL,
+        actor_id INT NOT NULL,
+        CONSTRAINT PK_NotificationChange PRIMARY KEY (notification_change_id),
+        CONSTRAINT FK_NotificationChange_NotificationObject FOREIGN KEY (notification_object_id) REFERENCES notification_object (notification_object_id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT FK_NotificationChange_User FOREIGN KEY (actor_id) REFERENCES user (user_id) ON DELETE NO ACTION ON UPDATE NO ACTION
+    );
+
 -- SAMPLE DATA FOR CATEGORY TABLE -- 
 INSERT INTO
     `category` (
@@ -318,4 +357,217 @@ VALUES
         'dela Paz',
         'khent@usc.edu.ph',
         '09472938201'
+    );
+
+-- SAMPLE DATA FOR NOTIFICATION ENTITY TYPE --
+INSERT INTO
+    `notification_entity_type` (
+        `notification_entity_type_id`,
+        `entity`,
+        `action_type`
+    )
+VALUES
+    (
+        1,
+        'TICKET',
+        'CREATE'
+    ),
+    (
+        2,
+        'TICKET',
+        'UPDATE'
+    ),
+    (
+        3,
+        'TICKET',
+        'DELETE'
+    ),
+    (
+        4,
+        'COMMENT',
+        'CREATE'
+    ),
+    (
+        5,
+        'COMMENT',
+        'UPDATE'
+    ),
+    (
+        6,
+        'COMMENT',
+        'DELETE'
+    );
+
+INSERT INTO
+    `notification_object` (
+        `notification_object_id`,
+        `notification_entity_type_id`,
+        `entity_id`
+    )
+VALUES
+    (
+        1,
+        '1',
+        '1'
+    ),
+    (
+        2,
+        '1',
+        '2'
+    ),
+    (
+        3,
+        '1',
+        '3'
+    ),
+    (
+        4,
+        '4',
+        '1'
+    ),
+    (
+        5,
+        '4',
+        '2'
+    ),
+    (
+        6,
+        '4',
+        '3'
+    );
+
+INSERT INTO
+    `notification` (
+        `notification_id`,
+        `notification_object_id`,
+        `notifier_id`
+    )
+VALUES
+    (
+        1,
+        '1',
+        '1'
+    ),
+    (
+        2,
+        '1',
+        '2'
+    ),
+    (
+        3,
+        '1',
+        '3'
+    ),
+    (
+        4,
+        '1',
+        '4'
+    ),
+    (
+        5,
+        '1',
+        '5'
+    ),    
+    (
+        6,
+        '2',
+        '1'
+    ),   
+    (
+        7,
+        '2',
+        '2'
+    ),   
+    (
+        8,
+        '2',
+        '3'
+    ),   
+    (
+        9,
+        '2',
+        '4'
+    ),   
+    (
+        10,
+        '2',
+        '5'
+    ),
+    (
+        11,
+        '3',
+        '1'
+    ),
+    (
+        12,
+        '3',
+        '2'
+    ),
+    (
+        13,
+        '3',
+        '3'
+    ),
+    (
+        14,
+        '3',
+        '4'
+    ),
+    (
+        15,
+        '3',
+        '5'
+    ),
+    (
+        16,
+        '4',
+        '6'
+    ),        
+    (
+        17,
+        '5',
+        '6'
+    ),              
+    (
+        18,
+        '6',
+        '7'
+    );
+
+INSERT INTO
+    `notification_change` (
+        `notification_change_id`,
+        `notification_object_id`,
+        `actor_id`
+    )
+VALUES
+    (
+        1,
+        '1',
+        '6'
+    ),
+    (
+        2,
+        '2',
+        '6'
+    ),
+    (
+        3,
+        '3',
+        '7'
+    ),
+    (
+        4,
+        '4',
+        '1'
+    ),
+    (
+        5,
+        '5',
+        '1'
+    ),
+    (
+        6,
+        '6',
+        '2'
     );
