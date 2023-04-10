@@ -5,7 +5,7 @@
             Updates
         </h2>
         <?php if ($data['update']): ?>
-            <div class="d-flex flex-column gap-3">
+            <div class="d-flex flex-column gap-3 pe-3">
                 <?php foreach ($data['update'] as $update): ?>
                     <div class="card">
                         <div class="card-body">
@@ -16,7 +16,7 @@
                                 <?php if ($update->action_type === 'CREATE'): ?>
                                     created a
                                 <?php elseif ($update->action_type === 'UPDATE'): ?>
-                                    updated your
+                                    updated a
                                 <?php elseif ($update->action_type === 'COMMENT'): ?>
                                     commented on your
                                 <?php endif; ?>

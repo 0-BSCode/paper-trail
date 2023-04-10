@@ -7,6 +7,8 @@ use \Models\TicketModel;
 use \Models\CategoryModel;
 use \Models\CommentModel;
 use \Models\StatusModel;
+use \Models\UserModel;
+use \Controllers\Notification;
 
 class Ticket
 {
@@ -14,6 +16,8 @@ class Ticket
     private $categoryModel;
     private $statusModel;
     private $commentModel;
+    private $userModel;
+    private $notificationController;
 
     public function __construct()
     {
@@ -21,6 +25,8 @@ class Ticket
         $this->categoryModel = new CategoryModel;
         $this->commentModel = new CommentModel;
         $this->statusModel = new StatusModel;
+        $this->userModel = new UserModel;
+        $this->notificationController = new Notification;
     }
 
     public function viewTicket($params)
@@ -64,17 +70,19 @@ class Ticket
 
     public function createTicket()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->createTicket($_SESSION['user_id'], $_POST['category_id'], $_POST['title'], $_POST['description']))
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->createTicket($_SESSION['user_id'], $_POST['category_id'], $_POST['title'], $_POST['description'])) {
             header("Location: " . URLROOT);
-        else
+        } else
             die(TICKET_NOT_CREATED);
     }
 
     public function updateTicket($params)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->updateTicket($params['id'], $_POST['category_id'], $_POST['title'], $_POST['description']))
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->updateTicket($params['id'], $_POST['category_id'], $_POST['title'], $_POST['description'])) {
+            $organization_members = $this->userModel->getByRole('organization');
+            $this->notificationController->createNotification('UPDATE', $params['id'], array_column($organization_members, 'user_id'));
             header("Location: " . URLROOT . "/ticket/" . $params['id'] . "/view-ticket");
-        else
+        } else
             die(TICKET_NOT_UPDATED);
     }
 

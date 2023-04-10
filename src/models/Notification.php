@@ -40,4 +40,18 @@ class NotificationModel
         $this->db->bind(":user_id", $user_id);
         return $this->db->resultSet();
     }
+
+    /**
+     * CREATE
+     * @return bool
+     */
+    public function create($notification_object_id, $notifier_id): bool
+    {
+        $this->db->query("INSERT INTO notification (`notification_object_id`, `notifier_id`) VALUES (:notification_object_id, :notifier_id)");
+        $this->db->bind(":notification_object_id", $notification_object_id);
+        $this->db->bind(":notifier_id", $notifier_id);
+        if ($this->db->execute())
+            return true;
+        return false;
+    }
 }

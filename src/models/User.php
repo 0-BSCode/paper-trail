@@ -49,4 +49,16 @@ class UserModel
         $this->db->bind(':email', $email);
         return (array) $this->db->single();
     }
+
+    // TODO: Verify security
+    /**
+     * READ BY ROLE
+     * @return 
+     */
+    public function getByRole($role): array
+    {
+        $this->db->query("SELECT user_id, first_name, last_name, email FROM user WHERE role = :role");
+        $this->db->bind(':role', $role);
+        return $this->db->resultSet();
+    }
 }
