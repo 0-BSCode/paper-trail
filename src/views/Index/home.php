@@ -4,14 +4,47 @@
         <h2>
             Updates
         </h2>
-        <p>
-            No udpates yet.
-        </p>
+        <?php if ($data['update']): ?>
+            <div class="d-flex flex-column gap-3">
+                <?php foreach ($data['update'] as $update): ?>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-title">
+                                <b>
+                                    <?= $update->first_name . " " . $update->last_name; ?>
+                                </b>
+                                <?php if ($update->action_type === 'CREATE'): ?>
+                                    created a
+                                <?php elseif ($update->action_type === 'UPDATE'): ?>
+                                    updated your
+                                <?php elseif ($update->action_type === 'COMMENT'): ?>
+                                    commented on your
+                                <?php endif; ?>
+                                ticket:
+                                <a class="stretched-link text-decoration-none"
+                                    href="<?= URLROOT; ?>/ticket/<?= $update->ticket_id; ?>/view-ticket">
+                                    <i>
+                                        <?= $update->title; ?>
+                                    </i>
+                                </a>
+                            </p>
+                            <p class="card-subtitle text-muted">
+                                <?= $update->date_created; ?>
+                            </p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <p>
+                No udpates yet.
+            </p>
+        <?php endif; ?>
     </section>
     <section class="flex-grow-1">
         <h1>Grievances</h1>
         <a class="btn btn-primary" type="button" href="<?= URLROOT; ?>/ticket/create">Create</a>
-        <?php if ($data): ?>
+        <?php if ($data['ticket']): ?>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
