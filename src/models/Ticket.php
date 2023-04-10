@@ -74,9 +74,9 @@ class TicketModel
 
     /**
      * CREATE
-     * @return boolean
+     * @return string|bool
      */
-    public function createTicket($user_id, $category_id, $title, $description)
+    public function createTicket($user_id, $category_id, $title, $description): string|bool
     {
         $this->db->query("INSERT INTO ticket (`user_id`, `category_id`, `title`, `description`) VALUES (:user_id, :category_id, :title, :description)");
         $this->db->bind(":user_id", $user_id);
@@ -84,7 +84,7 @@ class TicketModel
         $this->db->bind(":title", $title);
         $this->db->bind(":description", $description);
         if ($this->db->execute())
-            return true;
+            return $this->db->lastInsertedID();
         return false;
     }
 

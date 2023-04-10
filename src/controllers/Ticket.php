@@ -70,10 +70,17 @@ class Ticket
 
     public function createTicket()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->createTicket($_SESSION['user_id'], $_POST['category_id'], $_POST['title'], $_POST['description'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $ticket_id = $this->ticketModel->createTicket($_SESSION['user_id'], $_POST['category_id'], $_POST['title'], $_POST['description']);
+
+            if (gettype($ticket_id) === 'boolean') {
+                die(TICKET_NOT_CREATED);
+            }
+
+            $organization_members = $this->userModel->getByRole('organization');
+            $this->notificationController->createNotification('CREATE', $ticket_id, array_column($organization_members, 'user_id'));
             header("Location: " . URLROOT);
-        } else
-            die(TICKET_NOT_CREATED);
+        }
     }
 
     public function updateTicket($params)
