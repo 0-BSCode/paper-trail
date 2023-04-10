@@ -34,7 +34,7 @@ CREATE TABLE
         ticket_id INT NOT NULL AUTO_INCREMENT,
         user_id INT NOT NULL,
         category_id INT NOT NULL,
-        status_id INT NOT NULL,
+        status_id INT NOT NULL DEFAULT 1,
         title VARCHAR(100) NOT NULL,
         description TEXT,
         date_created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
