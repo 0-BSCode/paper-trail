@@ -19,6 +19,8 @@
                                     updated a
                                 <?php elseif ($update->action_type === 'COMMENT'): ?>
                                     commented on your
+                                <?php elseif ($update->action_type === 'STATUS'): ?>
+                                    updated the status of your
                                 <?php endif; ?>
                                 ticket:
                                 <a class="stretched-link text-decoration-none"

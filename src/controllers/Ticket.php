@@ -95,9 +95,11 @@ class Ticket
 
     public function updateTicketStatus($params)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->updateTicketStatus($params['id'], $_POST['status_id']))
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->updateTicketStatus($params['id'], $_POST['status_id'])) {
+            $ticket = $this->ticketModel->getOne($params['id']);
+            $this->notificationController->createNotification('STATUS', $ticket['ticket_id'], [$ticket['user_id']]);
             header("Location: " . URLROOT . "/ticket/" . $params['id'] . "/view-ticket");
-        else
+        } else
             die(TICKET_NOT_UPDATED);
     }
 }

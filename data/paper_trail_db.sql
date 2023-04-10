@@ -80,7 +80,7 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS `notification_entity_type` (
         notification_entity_type_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-        action_type ENUM ('CREATE', 'UPDATE', 'DELETE', 'COMMENT') NOT NULL,
+        action_type VARCHAR(15),
         CONSTRAINT PK_NotificationEntityType PRIMARY KEY (notification_entity_type_id)
     );
 
@@ -380,6 +380,10 @@ VALUES
     (
         4,
         'COMMENT'
+    ),
+    (
+        5,
+        'STATUS'
     );
 
 INSERT INTO
