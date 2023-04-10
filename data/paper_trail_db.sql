@@ -80,8 +80,7 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS `notification_entity_type` (
         notification_entity_type_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-        entity ENUM ('TICKET', 'COMMENT') NOT NULL DEFAULT 'TICKET',
-        action_type ENUM ('CREATE', 'UPDATE', 'DELETE') NOT NULL,
+        action_type ENUM ('CREATE', 'UPDATE', 'DELETE', 'COMMENT') NOT NULL,
         CONSTRAINT PK_NotificationEntityType PRIMARY KEY (notification_entity_type_id)
     );
 
@@ -363,39 +362,24 @@ VALUES
 INSERT INTO
     `notification_entity_type` (
         `notification_entity_type_id`,
-        `entity`,
         `action_type`
     )
 VALUES
     (
         1,
-        'TICKET',
         'CREATE'
     ),
     (
         2,
-        'TICKET',
         'UPDATE'
     ),
     (
         3,
-        'TICKET',
         'DELETE'
     ),
     (
         4,
-        'COMMENT',
-        'CREATE'
-    ),
-    (
-        5,
-        'COMMENT',
-        'UPDATE'
-    ),
-    (
-        6,
-        'COMMENT',
-        'DELETE'
+        'COMMENT'
     );
 
 INSERT INTO
