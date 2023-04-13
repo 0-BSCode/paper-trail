@@ -28,6 +28,11 @@ class Notification
         return $this->notificationModel->getByUser($user_id);
     }
 
+    public function getTicketNotifications($ticket_id): array
+    {
+        return $this->notificationModel->getByTicket($ticket_id);
+    }
+
     public function createNotification($action_type, $entity_id, $notifier_ids)
     {
         // Create notification object

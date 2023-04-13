@@ -111,5 +111,41 @@
             </form>
         </div>
     </section>
+    <section>
+        <h3>
+            Updates
+        </h3>
+        <?php if ($data["updates"]): ?>
+            <div class="d-flex flex-column gap-2">
+                <?php foreach ($data["updates"] as $update): ?>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <b>
+                                    <?= $update->first_name . ' ' . $update->last_name; ?>
+                                </b>
+                                <?php if ($update->action_type === 'CREATE'): ?>
+                                    created the ticket.
+                                <?php elseif ($update->action_type === 'UPDATE'): ?>
+                                    updated the ticket.
+                                <?php elseif ($update->action_type === 'COMMENT'): ?>
+                                    commented on the ticket.
+                                <?php elseif ($update->action_type === 'STATUS'): ?>
+                                    changed the status of the ticket.
+                                <?php endif; ?>
+                            </p>
+                            <p class="text-muted card-text">
+                                <?= $update->date_created; ?>
+                            </p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <p>
+                No updates.
+            </p>
+        <?php endif; ?>
+    </section>
 </main>
 <?php require_once APPROOT . '/src/views/include/footer.php'; ?>

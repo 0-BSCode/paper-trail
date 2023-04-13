@@ -31,7 +31,7 @@ class Ticket
 
     public function viewTicket($params)
     {
-        view("Tickets/view", ["ticket" => $this->getTicket($params['id']), "comments" => $this->getComments($params['id']), "statuses" => $this->statusModel->getAll()], true);
+        view("Tickets/view", ["ticket" => $this->getTicket($params['id']), "comments" => $this->getComments($params['id']), "statuses" => $this->statusModel->getAll(), "updates" => $this->notificationController->getTicketNotifications($params["id"])], true);
     }
 
     public function editTicket($params)
