@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="<?= URLROOT; ?>/public/css/bootstrap.css" media="screen">
 	<link rel="stylesheet" href="<?= URLROOT; ?>/public/css/config.css" media="screen">
-	<link rel="stylesheet" href="<?= URLROOT; ?>/public/summernote/summernote.min.css" media="screen">
+	<link rel="stylesheet" href="<?= URLROOT; ?>/public/summernote/summernote-lite.css">
 	<title>
 		<?= SITENAME; ?>
 	</title>
