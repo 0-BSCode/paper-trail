@@ -62,6 +62,7 @@ CREATE TABLE
         document_id INT NOT NULL AUTO_INCREMENT,
         name VARCHAR(100) NOT NULL,
         description TEXT,
+        link VARCHAR(255),
         date_created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT PK_Document PRIMARY KEY (document_id)
     );
