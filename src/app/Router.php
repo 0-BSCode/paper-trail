@@ -102,9 +102,7 @@ class Router
         die('Page not found.');
       }
     } else {
-      echo $controller;
-      echo $action;
-      // header('location: ' . URLROOT);
+      header('location: ' . URLROOT);
     }
 
     call_user_func_array([$controller, $action], [$this->params]);

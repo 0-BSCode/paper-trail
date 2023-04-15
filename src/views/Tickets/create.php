@@ -4,6 +4,7 @@
         Create Ticket
     </h1>
     <form action="<?= URLROOT; ?>/ticket/create-ticket" method="POST">
+        <!-- <form method="POST"> -->
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" name="title" class="form-control" id="title" placeholder="Juan de la Cruz" required>

@@ -22,8 +22,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" name="description" id="description" rows="10"
-                            disabled><?= $data['ticket']['description']; ?></textarea>
+                        <textarea class="form-control" name="description" id="description"
+                            rows="10"><?= $data['ticket']['description']; ?></textarea>
                     </div>
                 </form>
                 <?php if ($_SESSION['role'] === 'student'): ?>
