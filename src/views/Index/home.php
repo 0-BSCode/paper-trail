@@ -75,7 +75,19 @@
                                 <?= $ticket->category_name; ?>
                             </td>
                             <td>
-                                <?= $ticket->status_name; ?>
+                                <?php if ($ticket->status_name === 'draft'): ?>
+                                    <p class="bg-secondary mb-0 text-uppercase rounded text-light text-center">
+                                    <?php elseif ($ticket->status_name === 'pending'): ?>
+                                    <p class="bg-info mb-0 text-uppercase rounded text-light text-center">
+                                    <?php elseif ($ticket->status_name === 'review'): ?>
+                                    <p class="bg-warning mb-0 text-uppercase rounded text-light text-center">
+                                    <?php elseif ($ticket->status_name === 'raised'): ?>
+                                    <p class="bg-danger mb-0 text-uppercase rounded text-light text-center">
+                                    <?php elseif ($ticket->status_name === 'resolved'): ?>
+                                    <p class="bg-success mb-0 text-uppercase rounded text-light text-center">
+                                    <?php endif; ?>
+                                    <?= $ticket->status_name; ?>
+                                </p>
                             </td>
                             <?php if ($_SESSION['role'] === 'organization'): ?>
                                 <td scope="col">
