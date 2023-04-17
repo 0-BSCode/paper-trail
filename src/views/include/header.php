@@ -27,7 +27,10 @@
 			</ul>
 			<ul class="list-group d-flex flex-row list-group-flush">
 				<li class="list-group-item">
-					<?= $_SESSION['user_name']; ?>
+					<img src="<?= URLROOT; ?>/public/assets/images/person-circle.svg" alt="Profile Pic">
+					<span>
+						<?= $_SESSION['user_name']; ?>
+					</span>
 				</li>
 				<li class="list-group-item"><a href="<?= URLROOT; ?>/auth/logout">Log out</a></li>
 			</ul>

@@ -69,34 +69,32 @@
             <h2>
                 Comments
             </h2>
-            <?php foreach ($data['comments'] as $comment): ?>
-                <form class="d-flex flex-column rounded-3 border me-5 p-3">
-                    <div class="d-flex gap-3">
-                        <p>
-                            P
-                        </p>
-                        <div class="d-flex flex-column">
-                            <p>
-                                <?= $comment->first_name . ' ' . $comment->last_name; ?>
-                            </p>
-                            <p>
-                                <?= $comment->date_created; ?>
-                            </p>
+            <div class="d-flex flex-column gap-2 mb-3">
+                <?php foreach ($data['comments'] as $comment): ?>
+                    <form class="d-flex flex-column rounded-3 border me-5 p-3">
+                        <div class="d-flex gap-3 align-items-start">
+                            <img src="<?= URLROOT; ?>/public/assets/images/person-circle.svg" alt="Profile Pic">
+                            <div class="d-flex flex-column">
+                                <p>
+                                    <?= $comment->first_name . ' ' . $comment->last_name; ?>
+                                </p>
+                                <p>
+                                    <?= $comment->date_created; ?>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <textarea class="form-control" name="description" id="description" rows="4"
-                        readonly><?= $comment->description; ?></textarea>
-                </form>
-            <?php endforeach; ?>
-            <form class="d-flex flex-column rounded-3 border me-5 p-3" action="<?= URLROOT; ?>/comment/create-comment"
-                method="POST">
+                        <textarea class="form-control" name="description" id="description" rows="4"
+                            readonly><?= $comment->description; ?></textarea>
+                    </form>
+                <?php endforeach; ?>
+            </div>
+            <form class="d-flex flex-column gap-3 rounded-3 border me-5 p-3"
+                action="<?= URLROOT; ?>/comment/create-comment" method="POST">
                 <input type="hidden" name="ticket_id" value="<?= $data['ticket']['ticket_id']; ?>">
-                <div class="d-flex gap-3">
-                    <p>
-                        P
-                    </p>
+                <div class="d-flex gap-3 align-items-center">
+                    <img src="<?= URLROOT; ?>/public/assets/images/person-circle.svg" alt="Profile Pic">
                     <div class="d-flex flex-column">
-                        <p>
+                        <p class="mb-0">
                             <?= $_SESSION['user_name']; ?>
                         </p>
                     </div>
