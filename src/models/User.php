@@ -3,7 +3,7 @@ namespace Models;
 
 use \Models\Database;
 
-class User
+class UserModel
 {
     private $db;
 
@@ -30,7 +30,7 @@ class User
 
     /**
      * READ BY ID
-     * @return user
+     * @return usermodel
      */
     public function getById($user_id): array
     {
@@ -41,12 +41,24 @@ class User
 
     /**
      * READ BY EMAIL
-     * @return user
+     * @return usermodel
      */
     public function getByEmail($email): array
     {
         $this->db->query("SELECT user_id, first_name, last_name, email, password, role FROM user WHERE email = :email LIMIT 1");
         $this->db->bind(':email', $email);
         return (array) $this->db->single();
+    }
+
+    // TODO: Verify security
+    /**
+     * READ BY ROLE
+     * @return 
+     */
+    public function getByRole($role): array
+    {
+        $this->db->query("SELECT user_id, first_name, last_name, email FROM user WHERE role = :role");
+        $this->db->bind(':role', $role);
+        return $this->db->resultSet();
     }
 }

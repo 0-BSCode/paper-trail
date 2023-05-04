@@ -5,21 +5,34 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="<?= URLROOT; ?>/public/css/bootstrap.min.css" media="screen">
-
+	<link rel="stylesheet" href="<?= URLROOT; ?>/public/css/bootstrap.css" media="screen">
+	<link rel="stylesheet" href="<?= URLROOT; ?>/public/css/config.css" media="screen">
+	<link rel="stylesheet" href="<?= URLROOT; ?>/public/summernote/summernote-lite.css">
 	<title>
 		<?= SITENAME; ?>
 	</title>
 </head>
 
 <body>
-	<nav>
-		<ul>
-			<li><a href="<?= URLROOT; ?>"> Home </a></li>
-			<li><a href="<?= URLROOT; ?>/about"> About </a></li>
-			<li><a href="<?= URLROOT; ?>/test/tasks">Test database</a></li>
-			<li><a href="<?= URLROOT; ?>/auth/signup">Sign up</a></li>
-			<li><a href="<?= URLROOT; ?>/auth/signin">Sign in</a></li>
-			<li><a href="<?= URLROOT; ?>/auth/logout">Log out</a></li>
-		</ul>
-	</nav>
+	<?php if (isset($_SESSION['user_id'])): ?>
+		<nav class="d-flex justify-content-between align-items-start">
+			<ul class="list-group d-flex flex-row list-group-flush">
+				<?php if ($_SESSION['role'] === 'student'): ?>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>"> Home </a></li>
+				<?php else: ?>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>">Grievances</a></li>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>">Contacts</a></li>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>">Documents</a></li>
+				<?php endif; ?>
+			</ul>
+			<ul class="list-group d-flex flex-row list-group-flush">
+				<li class="list-group-item">
+					<img src="<?= URLROOT; ?>/public/assets/images/person-circle.svg" alt="Profile Pic">
+					<span>
+						<?= $_SESSION['user_name']; ?>
+					</span>
+				</li>
+				<li class="list-group-item"><a href="<?= URLROOT; ?>/auth/logout">Log out</a></li>
+			</ul>
+		</nav>
+	<?php endif; ?>

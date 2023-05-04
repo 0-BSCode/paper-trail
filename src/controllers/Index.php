@@ -1,17 +1,23 @@
 <?php
 namespace Controllers;
 
-session_start();
+use \Controllers\Ticket;
+use \Controllers\Notification;
+
+@session_start();
 
 class Index
 {
-  public function home()
+  private $ticketController;
+  private $notificationController;
+  public function __construct()
   {
-    view('Index/home', [], true);
+    $this->ticketController = new Ticket;
+    $this->notificationController = new Notification;
   }
 
-  public function about()
+  public function home()
   {
-    view('Index/about');
+    view('Index/home', ["ticket" => $this->ticketController->getTickets(), "update" => $this->notificationController->getNotifications($_SESSION['user_id'])], true);
   }
 }

@@ -1,9 +1,9 @@
 <?php
 namespace Controllers;
 
-session_start();
+@session_start();
 
-use \Models\User;
+use \Models\UserModel;
 
 class Auth
 {
@@ -11,7 +11,7 @@ class Auth
 
     public function __construct()
     {
-        $this->userModel = new User;
+        $this->userModel = new UserModel;
     }
 
     public function signin()
@@ -40,15 +40,9 @@ class Auth
             $user = $this->userModel->getByEmail($_POST['email']);
             if (isset($user['user_id']) && password_verify($_POST['password'], $user['password'])) {
                 $_SESSION['user_id'] = $user['user_id'];
+                $_SESSION['user_name'] = $user['first_name'] . " " . $user['last_name'];
                 $_SESSION['role'] = $user['role'];
                 unset($user['password']);
-                return $user;
-            }
-        } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $user = $this->userModel->getById($_SESSION['user_id']);
-            if (isset($user['user_id'])) {
-                unset($_SESSION['password']);
-                return $user;
             }
         }
         return array();

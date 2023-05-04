@@ -95,4 +95,10 @@ class Database
   {
     return $this->stmt->rowCount();
   }
+
+  // Get latest ID
+  public function lastInsertedID()
+  {
+    return $this->db_handler->lastInsertId();
+  }
 }

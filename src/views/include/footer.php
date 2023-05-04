@@ -1,11 +1,21 @@
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
+<script src="<?= URLROOT; ?>/public/jquery/jquery-3.6.4.min.js"></script>
+<script src="<?= URLROOT; ?>/public/js/bootstrap.bundle.js"></script>
+<script src="<?= URLROOT; ?>/public/summernote/summernote-lite.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#description').summernote({
+            height: 200,
+            tabsize: 2
+        });
+        $('span.note-icon-caret').remove();
 
-<script src="<?= URLROOT; ?>/public/js/bootstrap.js"></script>
+
+        // Basic validation (disable RTE on view)
+        if (window.location.pathname.includes('view')) {
+            $('#description').summernote('disable');
+        }
+    });
+</script>
 </body>
 
 </html>
