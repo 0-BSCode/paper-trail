@@ -20,7 +20,7 @@
 				<?php if ($_SESSION['role'] === 'student'): ?>
 					<li class="list-group-item"><a href="<?= URLROOT; ?>"> Home </a></li>
 				<?php else: ?>
-					<li class="list-group-item"><a href="<?= URLROOT; ?>">Grievances</a></li>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>">Test</a></li>
 					<li class="list-group-item"><a href="<?= URLROOT; ?>">Contacts</a></li>
 					<li class="list-group-item"><a href="<?= URLROOT; ?>">Documents</a></li>
 				<?php endif; ?>
