@@ -13,22 +13,18 @@
 		<?= SITENAME; ?>
 	</title>
 	<style>
-		h4,h6{
+		.H4,H6{
 			color:black;
 			font-weight: small;
 		}
-		p{
-			font-size: bold;
-			color:black;
-		}
-		img{
+		.Img{
 			width: 30px; 
 			height: 30px;
 		}
-		h6{
+		.H6{
 			margin-top: 3gitpx;
 		}
-		span{
+		.Span{
 			font-size: 17px;
 		}
 		.list-group-item{
@@ -44,22 +40,17 @@ border: none;
 				<?php if ($_SESSION['role'] === 'student'): ?>
 					<li class="list-group-item"><a href="<?= URLROOT; ?>"><p style="font-size:x-large">Home</p> </a></li>
 				<?php else: ?>
-				
-					<li class="list-group-item"><a href="<?= URLROOT; ?>"><h4>Grievances</h4></a></li>
-					<li class="list-group-item"><a href="<?= URLROOT; ?>"><h4>Contacts</h4></a></li>
-					<li class="list-group-item"><a href="<?= URLROOT; ?>"><h4>Documents</h4></a></li>
+				<li class="list-group-item"><a href="<?= URLROOT; ?>"><h4 class="H4">Grievances</h4></a></li><li class="list-group-item"><a href="<?= URLROOT; ?>"><h4 class="H4">Contacts</h4></a></li><li class="list-group-item"><a href="<?= URLROOT; ?>"><h4 class="H4">Documents</h4></a></li>
 				<?php endif; ?>
 			</ul>
 			<ul class="list-group d-flex flex-row list-group-flush">
 				<li class="list-group-item">
-					<img src="<?= URLROOT; ?>/public/assets/images/person-circle.svg" alt="Profile Pic">
-					<span>
-						<?= $_SESSION['user_name']; ?>
-					</span>
+					<img class="Img" src="<?= URLROOT; ?>/public/assets/images/person-circle.svg" alt="Profile Pic">
+					<span class="Span"><?= $_SESSION['user_name']; ?></span>
 				</li>
 				<li class="list-group-item">
 
-					<a href="<?= URLROOT; ?>/auth/logout"><h6> Log out</h6></a></li>
+					<a href="<?= URLROOT; ?>/auth/logout"><h6 class="H6"> Log out</h6></a></li>
 			</ul>
 		</nav>
 	<?php endif; ?>
