@@ -8,9 +8,20 @@
 	<link rel="stylesheet" href="<?= URLROOT; ?>/public/css/bootstrap.css" media="screen">
 	<link rel="stylesheet" href="<?= URLROOT; ?>/public/css/config.css" media="screen">
 	<link rel="stylesheet" href="<?= URLROOT; ?>/public/summernote/summernote-lite.css">
+	
 	<title>
 		<?= SITENAME; ?>
 	</title>
+	<style>
+		h4,h6{
+			color:black;
+			font-weight: small;
+		}
+		p{
+			font-size: bold;
+			color:black;
+		}
+	</style>
 </head>
 
 <body>
@@ -18,11 +29,17 @@
 		<nav class="d-flex justify-content-between align-items-start">
 			<ul class="list-group d-flex flex-row list-group-flush">
 				<?php if ($_SESSION['role'] === 'student'): ?>
-					<li class="list-group-item"><a href="<?= URLROOT; ?>"> Home </a></li>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>"><p style="font-size:x-large">Home</p> </a></li>
 				<?php else: ?>
+<<<<<<< Updated upstream
 					<li class="list-group-item"><a href="<?= URLROOT; ?>">Test</a></li>
 					<li class="list-group-item"><a href="<?= URLROOT; ?>">Contacts</a></li>
 					<li class="list-group-item"><a href="<?= URLROOT; ?>">Documents</a></li>
+=======
+					<li class="list-group-item"><a href="<?= URLROOT; ?>"><h4>Grievances</h4></a></li>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>"><h4>Contacts</h4></a></li>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>"><h4>Documents</h4></a></li>
+>>>>>>> Stashed changes
 				<?php endif; ?>
 			</ul>
 			<ul class="list-group d-flex flex-row list-group-flush">
@@ -32,7 +49,9 @@
 						<?= $_SESSION['user_name']; ?>
 					</span>
 				</li>
-				<li class="list-group-item"><a href="<?= URLROOT; ?>/auth/logout">Log out</a></li>
+				<li class="list-group-item">
+
+					<a href="<?= URLROOT; ?>/auth/logout"><p> Log out</p></a></li>
 			</ul>
 		</nav>
 	<?php endif; ?>
