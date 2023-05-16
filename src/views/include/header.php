@@ -8,49 +8,40 @@
 	<link rel="stylesheet" href="<?= URLROOT; ?>/public/css/bootstrap.css" media="screen">
 	<link rel="stylesheet" href="<?= URLROOT; ?>/public/css/config.css" media="screen">
 	<link rel="stylesheet" href="<?= URLROOT; ?>/public/summernote/summernote-lite.css">
-	
+
 	<title>
 		<?= SITENAME; ?>
 	</title>
-	<style>
-		.H4,H6{
-			color:black;
-			font-weight: small;
-		}
-		.Img{
-			width: 30px; 
-			height: 30px;
-		}
-		.H6{
-			margin-top: 3gitpx;
-		}
-		.Span{
-			font-size: 17px;
-		}
-		.list-group-item{
-border: none;
-		}
-	</style>
 </head>
 
 <body>
 	<?php if (isset($_SESSION['user_id'])): ?>
-		<nav class="d-flex justify-content-between align-items-start">
-			<ul class="list-group d-flex flex-row list-group-flush">
-				<?php if ($_SESSION['role'] === 'student'): ?>
-					<li class="list-group-item"><a href="<?= URLROOT; ?>"><p style="font-size:x-large">Home</p> </a></li>
-				<?php else: ?>
-				<li class="list-group-item"><a href="<?= URLROOT; ?>"><h4 class="H4">Grievances</h4></a></li><li class="list-group-item"><a href="<?= URLROOT; ?>"><h4 class="H4">Contacts</h4></a></li><li class="list-group-item"><a href="<?= URLROOT; ?>"><h4 class="H4">Documents</h4></a></li>
-				<?php endif; ?>
-			</ul>
-			<ul class="list-group d-flex flex-row list-group-flush">
-				<li class="list-group-item">
-					<img class="Img" src="<?= URLROOT; ?>/public/assets/images/person-circle.svg" alt="Profile Pic">
-					<span class="Span"><?= $_SESSION['user_name']; ?></span>
-				</li>
-				<li class="list-group-item">
+		<nav class="navbar navbar-expand-md navbar-dark" style="background-color:dimgray">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-start">
+      <?php if ($_SESSION['role'] === 'student'): ?>
+        <a href="<?= URLROOT; ?>" class="navbar-brand"><h4 class="mb-0">Home</h4></a>
+      <?php else: ?>
+        <a href="<?= URLROOT; ?>" class="navbar-brand"><h4 class="mb-0">Grievances</h4></a>
+        <a href="<?= URLROOT; ?>" class="navbar-brand"><h4 class="mb-0">Contacts</h4></a>
+        <a href="<?= URLROOT; ?>" class="navbar-brand"><h4 class="mb-0">Documents</h4></a>
+      <?php endif; ?>
+    </div>
+    <div class="d-flex justify-content-end">
+      <div class="d-flex align-items-center me-3">
+        <img src="<?= URLROOT; ?>/public/assets/images/person-circle.svg" alt="Profile Pic" class="me-2" style="width: 30px; height: 30px;">
+        <h6 class="mb-0"><?= $_SESSION['user_name']; ?></h6>
+      </div>
+      <a href="<?= URLROOT; ?>/auth/logout" class="btn btn-danger">Log out</a>
+    </div>
+  </div>
+</nav>
 
-					<a href="<?= URLROOT; ?>/auth/logout"><h6 class="H6"> Log out</h6></a></li>
-			</ul>
-		</nav>
 	<?php endif; ?>
+
+	<!-- Rest of your HTML content -->
+
+	<script src="<?= URLROOT; ?>/public/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
