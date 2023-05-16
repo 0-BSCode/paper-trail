@@ -1,47 +1,56 @@
 <?php require_once APPROOT . '/src/views/include/header.php'; ?>
-<main class="d-flex p-5 gap-3">
-    <section class="flex-grow-1">
-        <h2>
-            Updates
-        </h2>
-        <?php if ($data['update']): ?>
-            <div class="d-flex flex-column gap-3 pe-3">
-                <?php foreach ($data['update'] as $update): ?>
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="card-title">
-                                <b>
-                                    <?= $update->first_name . " " . $update->last_name; ?>
-                                </b>
-                                <?php if ($update->action_type === 'CREATE'): ?>
-                                    created a
-                                <?php elseif ($update->action_type === 'UPDATE'): ?>
-                                    updated a
-                                <?php elseif ($update->action_type === 'COMMENT'): ?>
-                                    commented on
-                                <?php elseif ($update->action_type === 'STATUS'): ?>
-                                    updated the status of your
-                                <?php endif; ?>
-                                ticket:
-                                <a class="stretched-link text-decoration-none"
-                                    href="<?= URLROOT; ?>/ticket/<?= $update->ticket_id; ?>/view-ticket">
-                                    <i>
-                                        <?= $update->title; ?>
-                                    </i>
-                                </a>
-                            </p>
-                            <p class="card-subtitle text-muted">
-                                <?= $update->date_created; ?>
-                            </p>
+<style>
+    body {
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+<main class="d-flex p-5 gap-3 flex-grow-1">
+    <section class="flex-grow-1 position-relative d-flex flex-column overflow-auto">
+        <div class="position-absolute">
+            <h2>
+                Updates
+            </h2>
+            <?php if ($data['update']): ?>
+                <div class="d-flex flex-column gap-3 pe-3">
+                    <?php foreach ($data['update'] as $update): ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-title">
+                                    <b>
+                                        <?= $update->first_name . " " . $update->last_name; ?>
+                                    </b>
+                                    <?php if ($update->action_type === 'CREATE'): ?>
+                                        created a
+                                    <?php elseif ($update->action_type === 'UPDATE'): ?>
+                                        updated a
+                                    <?php elseif ($update->action_type === 'COMMENT'): ?>
+                                        commented on
+                                    <?php elseif ($update->action_type === 'STATUS'): ?>
+                                        updated the status of your
+                                    <?php endif; ?>
+                                    ticket:
+                                    <a class="stretched-link text-decoration-none"
+                                        href="<?= URLROOT; ?>/ticket/<?= $update->ticket_id; ?>/view-ticket">
+                                        <i>
+                                            <?= $update->title; ?>
+                                        </i>
+                                    </a>
+                                </p>
+                                <p class="card-subtitle text-muted">
+                                    <?= $update->date_created; ?>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        <?php else: ?>
-            <p>
-                No udpates yet.
-            </p>
-        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <p>
+                    No udpates yet.
+                </p>
+            <?php endif; ?>
+        </div>
     </section>
     <section class="flex-grow-1">
         <h1>Grievances</h1>
