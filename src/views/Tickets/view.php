@@ -57,7 +57,7 @@
                             <?= $data['ticket']['status_description']; ?>
                         </small>
                         <button type="submit" class="btn btn-primary d-block mt-3">
-                            Update
+                            Update Status
                         </button>
                     </form>
                 <?php endif; ?>
