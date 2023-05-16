@@ -1,17 +1,11 @@
 <?php require_once APPROOT . '/src/views/include/header.php'; ?>
 <main>
     <h1>Add New Document</h1>
-    <?php if (empty(!$errors)): ?>
-    <div class = "alert alert-danger">
-        <?php foreach($errors as $error): ?>
-            <div><?php echo $error?></div>
-        <?php endforeach; ?>
-    </div>
-<?php endif; ?>
-    <form action = "<?= URLROOT; ?>/document/create" method = "post">
+
+    <form action = "<?= URLROOT; ?>/document/create-document" method = "POST">
         <div class="form-group">
             <label>Document Name</label>
-            <input type ="text" class="form-control" name = "title" placeholder="Enter title of document">
+            <input type ="text" class="form-control" name = "name" placeholder="Enter title of document">
         </div>
 
         <div class="form-group">

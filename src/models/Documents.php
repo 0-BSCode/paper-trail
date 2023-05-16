@@ -21,14 +21,19 @@ class DocumentModel{
         return $this->db->resultSet();
     }
 
-    public function createDocument($title, $link, $description): bool
+    /**
+     * CREATE
+     * @return string|bool
+     */
+        
+    public function createDocument($user_id, $name, $link, $description): string|bool
     {
-        $this->db->query("INSERT INTO document (`name`, `linktoDoc`, `description`) VALUES (:title, :link, :description)");
-        $this->db->bind(":title", $title);
+        $this->db->query("INSERT INTO document (`name`, `link`, `description`) VALUES (:name, :link, :description)");
+        $this->db->bind(":name", $name);
         $this->db->bind(":link", $link);
         $this->db->bind(":description", $description);
         if ($this->db->execute())
-            return true;
+            return $this->db->lastInsertedID();
         return false;
     }
 }

@@ -2,7 +2,7 @@
 <main>
     <h1>School Memorandum and Significant Documents</h1>
     <p>
-        <a href = "uploadDoc.php" button class="btn btn-success">Add a new document</button></a>
+        <a href = "<?= URLROOT; ?>/document/create" button class="btn btn-success">Add a new document</button></a>
     </p>
     <table class="table">
   <thead>
@@ -15,17 +15,17 @@
     </tr>
   </thead>
   <tbody>
-    <?php foreach($documents as $i => $document){?>
+    <?php foreach($data['documents'] as $i => $document){?>
     <tr>
-      <th scope="row"><?php echo $i+1?></th>
-      <td scope="row"><?php echo $document['name']?></td>
-      <td scope="row"><?php echo $document['linktoDoc']?></td>
-      <td scope="row"><?php echo $document['description']?></td>
-      <td scope="row"><?php echo $document['date_created']?></td>
+    <th scope="row"><?php echo $i+1?></th>
+      <td scope="row"><?php echo $document->name?></td>
+      <td scope="row"><?php echo $document->link?></td>
+      <td scope="row"><?php echo $document->description?></td>
+      <td scope="row"><?php echo $document->date_created?></td>
+
     </tr>
     <?php }?>
-  </tbody>
-</table>
-  
+    </tbody>
+    </table>
 </main>
 <?php require_once APPROOT . '/src/views/include/footer.php'; ?>
