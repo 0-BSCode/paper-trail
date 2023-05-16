@@ -146,23 +146,19 @@ INSERT INTO
 VALUES
     (
         1,
-        'draft',
-        'Grievance was created but not submitted to the organization'
-    ), (
-        2,
         'pending',
         'Grievance was submitted but not viewed by an organization member'
     ), (
-        3,
+        2,
         'review',
         'Grievance has been viewed by an organization member'
     ), (
-        4,
+        3,
         'raised',
         'Grievance has been raised to proper authority by organization member'
     ),
     (
-        5,
+        4,
         'resolved',
         'Grievance has been marked as resolved by organization member'
     );
