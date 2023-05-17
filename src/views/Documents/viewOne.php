@@ -6,7 +6,7 @@
     <section class = "d-flex gap-5">
     <div class="flex-grow-1 position-relative">
             <?php if ($data): ?>
-                <form action="<?= URLROOT; ?>/document/<?= $data['document']['document_id']; ?>/view-documentOne" method="POST">
+                <form action="<?= URLROOT; ?>/document/<?= $data['document']['document_id']; ?>/view" method="POST">
                     <div class="mb-3">
                         <label for="name" class="form-label">Document Name</label>
                         <input type="text" name="name" class="form-control" id="name" placeholder="Juan de la Cruz"
@@ -19,7 +19,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" name="description" id="description"><?= $data['document']['description']; ?></textarea>
+                        <textarea class="form-control" name="description" id="description" readonly> <?= $data['document']['description'];?></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary d-block mt-3">
                             Update
