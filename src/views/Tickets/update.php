@@ -52,13 +52,14 @@
                 <div class="d-flex flex-column gap-2 mb-3">
                     <?php foreach ($data['comments'] as $comment): ?>
                         <form class="d-flex flex-column rounded-3 border me-2 p-3">
-                            <div class="d-flex gap-3">
-                                <p>
-                                    P
-                                </p>
+                            <div class="d-flex gap-3 align-items-start">
+                            <img class="mt-1" src="<?= URLROOT; ?>/public/assets/images/person-circle.svg"
+                                    alt="Profile Pic">
                                 <div class="d-flex flex-column">
-                                    <p>
-                                        <?= $comment->first_name . ' ' . $comment->last_name; ?>
+                                    <p class="mb-0">
+                                        <b>
+                                           <?= $comment->first_name . ' ' . $comment->last_name; ?>
+                                        </b>
                                     </p>
                                     <p>
                                         <?= $comment->date_created; ?>
