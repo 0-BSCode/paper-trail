@@ -12,6 +12,8 @@
       <th scope="col">Link to Document</th>
       <th scope="col">Description</th>
       <th scope="col">Date Created</th>
+      <th scope="col">Action</th>
+
     </tr>
   </thead>
   <tbody>
@@ -22,6 +24,12 @@
       <td scope="row"><?php echo $document->link?></td>
       <td scope="row"><?php echo $document->description?></td>
       <td scope="row"><?php echo $document->date_created?></td>
+      <td>
+        <form method="post" action = "<?= URLROOT; ?>/document/delete">
+          <input type = "hidden" name="document_id" value="<?php echo $document->document_id?>">
+          <button type = "submit" class="btn btn-sm btn-outline-danger">Delete</button>
+        </form>
+      </td>
 
     </tr>
     <?php }?>

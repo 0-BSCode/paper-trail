@@ -36,6 +36,20 @@ class DocumentModel{
             return $this->db->lastInsertedID();
         return false;
     }
+
+    /**
+     * DELETE
+     * @return bool
+     */
+    public function deleteDocument($user_id, $document_id): bool
+    {
+        $this->db->query("DELETE FROM document WHERE document_id = :document_id");
+        $this->db->bind(":document_id", $document_id);
+
+        if ($this->db->execute())
+            return true;
+        return false;
+    }
 }
 
 ?>

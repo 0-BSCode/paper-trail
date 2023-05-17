@@ -20,19 +20,20 @@ class ContactModel{
         $this->db->query("SELECT * FROM contact");
         return $this->db->resultSet();
     }
-
-    public function createContact($first_name, $last_name, $email, $contact_no): bool
+    /**
+     * CREATE
+     * @return string|bool
+     */
+    public function createContact($user_id, $first_name, $last_name, $email, $contact_no): string|bool
     {
         $this->db->query("INSERT INTO contact (`first_name`, `last_name`, `email`, `contact_no`) VALUES (:first_name, :last_name, :email, :contact_no)");
-        
-        
         $this->db->bind(":first_name", $first_name);
         $this->db->bind(":last_name", $last_name);
         $this->db->bind(":email", $email);
         $this->db->bind(":contact_no", $contact_no);
         
         if ($this->db->execute())
-            return true;
+            return $this->db->lastInsertedID();
         return false;
     }
 }
