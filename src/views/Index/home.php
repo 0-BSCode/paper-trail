@@ -54,7 +54,9 @@
     </section>
     <section class="flex-grow-1">
         <h1>Grievances</h1>
-        <a class="btn btn-primary" type="button" href="<?= URLROOT; ?>/ticket/create">Create</a>
+        <?php if ($_SESSION['role'] === 'student'): ?>
+            <a class="btn btn-primary" type="button" href="<?= URLROOT; ?>/ticket/create">Create</a>
+        <?php endif; ?>
         <?php if ($data['ticket']): ?>
             <table class="table table-striped table-hover">
                 <thead>
