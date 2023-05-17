@@ -17,21 +17,26 @@
     </tr>
   </thead>
   <tbody>
-    <?php foreach($data['documents'] as $i => $document){?>
-    <tr>
-    <th scope="row"><?php echo $i+1?></th>
-      <td scope="row"><?php echo $document->name?></td>
-      <td scope="row"><?php echo $document->link?></td>
-      <td scope="row"><?php echo $document->description?></td>
-      <td scope="row"><?php echo $document->date_created?></td>
-      <td>
-        <form method="post" action = "<?= URLROOT; ?>/document/delete">
-          <input type = "hidden" name="document_id" value="<?php echo $document->document_id?>">
-          <button type = "submit" class="btn btn-sm btn-outline-danger">Delete</button>
-        </form>
-      </td>
-
-    </tr>
+    <?php foreach($data['documents'] as $document){?>
+      <tr>
+        <th scope="row">
+          <?= $document->document_id;?>
+        </th>
+          
+          <td scope="row">
+            <a href="<?= URLROOT; ?>/document/<?= $document->document_id; ?>/view-document-one">
+                <?= $document->name; ?></a>
+          </td>
+          <td scope="row"><?php echo $document->link?></td>
+          <td scope="row"><?php echo $document->description?></td>
+          <td scope="row"><?php echo $document->date_created?></td>
+          <td>
+            <form method="post" action = "<?= URLROOT; ?>/document/delete">
+              <input type = "hidden" name="document_id" value="<?php echo $document->document_id?>">
+              <button type = "submit" class="btn btn-sm btn-outline-danger">Delete</button>
+            </form>
+          </td>
+      </tr>
     <?php }?>
     </tbody>
     </table>

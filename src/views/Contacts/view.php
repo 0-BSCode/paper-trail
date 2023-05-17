@@ -22,8 +22,10 @@
     <tbody>
     <?php foreach($data['contacts'] as $i => $contact){?>
         <tr>
-            <th scope="row"><?php echo $i+1?></th>
-            <td scope="row"><?php echo $contact->first_name?></td>
+        <th scope="row">
+      <?= $contact->contact_id;?>
+        </th>
+                <td scope="row"><?php echo $contact->first_name?></td>
             <td scope="row"><?php echo $contact->last_name?></td>
             <td scope="row"><?php echo $contact->email?></td>
             <td scope="row"><?php echo $contact->contact_no?></td>

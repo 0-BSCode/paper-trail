@@ -21,6 +21,17 @@ class DocumentModel{
         return $this->db->resultSet();
     }
 
+      /**
+     * GET BY USER ID
+     * @return array
+     */
+    public function getOne($document_id): array
+    {
+        $this->db->query("SELECT * FROM document WHERE document_id = :document_id");
+        $this->db->bind(":document_id", $document_id);
+        return (array) $this->db->single();
+        
+    }
     /**
      * CREATE
      * @return string|bool
