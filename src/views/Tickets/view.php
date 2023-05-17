@@ -74,10 +74,13 @@
                     <?php foreach ($data['comments'] as $comment): ?>
                         <form class="d-flex flex-column rounded-3 border me-2 p-3">
                             <div class="d-flex gap-3 align-items-start">
-                                <img src="<?= URLROOT; ?>/public/assets/images/person-circle.svg" alt="Profile Pic">
+                                <img class="mt-1" src="<?= URLROOT; ?>/public/assets/images/person-circle.svg"
+                                    alt="Profile Pic">
                                 <div class="d-flex flex-column">
-                                    <p>
-                                        <?= $comment->first_name . ' ' . $comment->last_name; ?>
+                                    <p class="mb-0">
+                                        <b>
+                                            <?= $comment->first_name . ' ' . $comment->last_name; ?>
+                                        </b>
                                     </p>
                                     <p>
                                         <?= $comment->date_created; ?>
@@ -96,7 +99,9 @@
                         <img src="<?= URLROOT; ?>/public/assets/images/person-circle.svg" alt="Profile Pic">
                         <div class="d-flex flex-column">
                             <p class="mb-0">
-                                <?= $_SESSION['user_name']; ?>
+                                <b>
+                                    <?= $_SESSION['user_name']; ?>
+                                </b>
                             </p>
                         </div>
                     </div>
