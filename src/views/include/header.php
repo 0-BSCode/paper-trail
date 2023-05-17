@@ -30,7 +30,7 @@
     <div class="d-flex justify-content-end">
       <div class="d-flex align-items-center me-3">
         <img src="<?= URLROOT; ?>/public/assets/images/person-circle.svg" alt="Profile Pic" class="me-2" style="width: 30px; height: 30px;">
-        <h6 class="mb-0"><?= $_SESSION['user_name']; ?></h6>
+        <h6 class="mb-0 text-white"><?= $_SESSION['user_name']; ?></h6>
       </div>
       <a href="<?= URLROOT; ?>/auth/logout" class="btn btn-danger">Log out</a>
     </div>
