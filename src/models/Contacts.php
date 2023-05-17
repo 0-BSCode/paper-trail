@@ -36,6 +36,16 @@ class ContactModel{
             return $this->db->lastInsertedID();
         return false;
     }
+    public function deleteContact($user_id, $contact_id): bool
+    {
+        $this->db->query("DELETE FROM contact WHERE contact_id = :contact_id");
+        $this->db->bind(":contact_id", $contact_id);
+
+        if ($this->db->execute())
+            return true;
+        return false;
+    }
+
 }
 
 ?>
