@@ -76,7 +76,7 @@ class TicketModel
      * CREATE
      * @return string|bool
      */
-    public function createTicket($user_id, $category_id, $title, $description): string|bool
+    public function createOne($user_id, $category_id, $title, $description): string|bool
     {
         $this->db->query("INSERT INTO ticket (`user_id`, `category_id`, `title`, `description`) VALUES (:user_id, :category_id, :title, :description)");
         $this->db->bind(":user_id", $user_id);
@@ -92,7 +92,7 @@ class TicketModel
      * UODATE
      * @return boolean
      */
-    public function updateTicket($ticket_id, $category_id, $title, $description)
+    public function updateOne($ticket_id, $category_id, $title, $description)
     {
         $this->db->query("UPDATE ticket SET title = :title, category_id = :category_id, description = :description, date_updated = current_timestamp() WHERE ticket_id = :ticket_id");
         $this->db->bind(":category_id", $category_id);
@@ -108,7 +108,7 @@ class TicketModel
      * UPDATE
      * @return boolean
      */
-    public function updateTicketStatus($ticket_id, $status_id): bool
+    public function updateOneStatus($ticket_id, $status_id): bool
     {
         $this->db->query("UPDATE ticket SET status_id = :status_id WHERE ticket_id = :ticket_id");
         $this->db->bind(":ticket_id", $ticket_id);
