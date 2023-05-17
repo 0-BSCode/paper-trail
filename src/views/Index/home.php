@@ -39,7 +39,7 @@
                                     </a>
                                 </p>
                                 <p class="card-subtitle text-muted">
-                                    <?= $update->date_created; ?>
+                                    <?= date(DATE_FORMAT, strtotime($update->date_created)); ?>
                                 </p>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                                     </th>
                                 <?php endif; ?>
                             <td>
-                                <?= $ticket->date_created; ?>
+                                <?= date(DATE_FORMAT, strtotime($ticket->date_created)); ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

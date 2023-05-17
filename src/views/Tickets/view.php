@@ -83,7 +83,7 @@
                                         </b>
                                     </p>
                                     <p>
-                                        <?= $comment->date_created; ?>
+                                        <?= date(DATE_FORMAT, strtotime($comment->date_created)); ?>
                                     </p>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                                 <?php endif; ?>
                             </p>
                             <p class="text-muted card-text">
-                                <?= $update->date_created; ?>
+                                <?= date(DATE_FORMAT, strtotime($update->date_created)); ?>
                             </p>
                         </div>
                     </div>

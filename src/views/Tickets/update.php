@@ -62,7 +62,7 @@
                                         </b>
                                     </p>
                                     <p>
-                                        <?= $comment->date_created; ?>
+                                        <?= date(DATE_FORMAT, strtotime($comment->date_created)); ?>
                                     </p>
                                 </div>
                             </div>
