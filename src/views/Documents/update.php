@@ -7,17 +7,17 @@
     <div class="flex-grow-1 position-relative">
         <?php if ($data): ?>
             <form action="<?= URLROOT; ?>/document/<?= $data['document']['document_id']; ?>/update-document" method="POST">
-                <div class="mb-3">
+                <div class="mb-3 w-50">
                     <label for="name" class="form-label">Document Name</label>
                     <input type="text" name="name" class="form-control" id="name" placeholder="Juan de la Cruz"
                         value="<?= $data['document']['name']; ?>">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 w-50">
                     <label for="link" class="form-label">Link to announcement</label>
                     <input type="text" name="link" class="form-control" id="link" placeholder="Juan de la Cruz"
                         value="<?= $data['document']['link']; ?>">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 w-50">
                     <label for="description" class="form-label">Description</label>
                     <textarea class="form-control" name="description" id="description"> <?= $data['document']['description'];?></textarea>
                 </div>

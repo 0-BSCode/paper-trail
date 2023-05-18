@@ -1,5 +1,5 @@
 <?php require_once APPROOT . '/src/views/include/header.php'; ?>
-<main>
+<main class = "mx-5 my-3">
     <h1>School Memorandum and Significant Documents</h1>
     <p>
         <a href = "<?= URLROOT; ?>/document/create" button class="btn btn-success">Add a new document</button></a>
