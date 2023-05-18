@@ -61,6 +61,23 @@ class DocumentModel{
             return true;
         return false;
     }
+    
+    /**
+     * UODATE
+     * @return boolean
+     */
+    public function updateOne($document_id, $name, $link, $description)
+    {
+        $this->db->query("UPDATE document SET name = :name, link = :link, description = :description WHERE document_id = :document_id");
+        $this->db->bind(":document_id", $document_id);
+        $this->db->bind(":name", $name);
+        $this->db->bind(":link", $link);
+        $this->db->bind(":description", $description);
+
+        if ($this->db->execute())
+            return true;
+        return false;
 }
+    }
 
 ?>

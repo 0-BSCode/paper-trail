@@ -21,10 +21,10 @@
                         <label for="description" class="form-label">Description</label>
                         <textarea class="form-control" name="description" id="description" readonly> <?= $data['document']['description'];?></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary d-block mt-3">
-                            Update
-                        </button>
-                    
+                    <div class="d-flex justify-content-between">
+                        <a href = "<?= URLROOT; ?>/document/<?= $data['document']['document_id']; ?>/edit-document" button type="submit" button class="btn btn-success">Update</button></a>
+
+                    </div>
                 </form>
             <?php endif; ?>
         </div>
