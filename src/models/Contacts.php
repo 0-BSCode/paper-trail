@@ -45,6 +45,18 @@ class ContactModel{
             return true;
         return false;
     }
+   /**
+     * GET ALL
+     * @return array
+     */
+    public function getOne($contact_id): array
+    {
+        $this->db->query("SELECT * FROM contact WHERE contact_id = :contact_id");
+        $this->db->bind(":contact_id", $contact_id);
+        return (array) $this->db->single();
+
+    }
+
 
 }
 

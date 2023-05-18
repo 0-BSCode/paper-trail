@@ -16,15 +16,18 @@
             <th scope="col">Last Name</th>
             <th scope="col">Email Address</th>
             <th scope="col">Contact Number</th>
-            <th scope="col">Action</th>>
+            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
-    <?php foreach($data['contacts'] as $i => $contact){?>
+    <?php foreach($data['contacts'] as $contact){?>
         <tr>
-            <th scope="row"><?php echo $i+1?></th>
+            <th scope="row"><?php echo $contact->contact_id?></th>
             <td scope="row"><?php echo $contact->first_name?></td>
-            <td scope="row"><?php echo $contact->last_name?></td>
+            <td scope="row">
+            <a href="<?= URLROOT; ?>/contact/<?= $contact->contact_id; ?>/view-contact-one">
+                <?= $contact->last_name; ?></a>
+          </td>
             <td scope="row"><?php echo $contact->email?></td>
             <td scope="row"><?php echo $contact->contact_no?></td>
             <td>

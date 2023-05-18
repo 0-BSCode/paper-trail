@@ -18,6 +18,10 @@ class Contact{
         view("Contacts/view", ["contacts" => $this->getContact()], true);
     }
 
+    public function viewContactOne($params){
+        view("Contacts/viewOne", ["contact" => $this->getContactOne($params['id'])], true);
+    }
+
     public function delete(){
         view("Contact/delete", ["contacts"=>$this->deleteContact($_POST['contact_id'])], true);
     }
@@ -27,6 +31,10 @@ class Contact{
         $this->contactModel = new ContactModel;
     }
 
+    public function getContactOne($contact_id){
+        return $this->contactModel->getOne($contact_id);
+
+    }
     public function getContact(): array
     {
         return $this->contactModel->getAll();
