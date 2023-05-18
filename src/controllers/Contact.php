@@ -14,7 +14,6 @@ class Contact{
         view("Contacts/create");
     }
     public function view(){
-        // echo "Documents/view";
         view("Contacts/view", ["contacts" => $this->getContact()], true);
     }
 

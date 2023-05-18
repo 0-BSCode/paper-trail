@@ -23,7 +23,6 @@
                     </div>
                     <div class="d-flex justify-content-between">
                         <a href = "<?= URLROOT; ?>/document/<?= $data['document']['document_id']; ?>/edit-document" button type="submit" button class="btn btn-success">Update</button></a>
-
                     </div>
                 </form>
             <?php endif; ?>

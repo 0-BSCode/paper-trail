@@ -22,11 +22,8 @@
                     <textarea class="form-control" name="description" id="description"> <?= $data['document']['description'];?></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary d-block mt-3">
-                            Submit changes
+                            Save changes
                         </button>
-                <!-- <div class="d-flex justify-content-between">
-                    <a type="button" class="btn btn-secondary" href = "<?= URLROOT; ?>/document/<?=$data['document']['document_id']; ?>/update-document"></a>
-                    <button type="submit" class="btn btn-primary d-block mt-3">Update</button> -->
             </form>
         <?php endif; ?>
 </div>

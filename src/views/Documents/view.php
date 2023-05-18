@@ -13,7 +13,6 @@
       <th scope="col">Description</th>
       <th scope="col">Date Created</th>
       <th scope="col">Action</th>
-
     </tr>
   </thead>
   <tbody>
@@ -22,7 +21,6 @@
         <th scope="row">
           <?= $document->document_id;?>
         </th>
-          
           <td scope="row">
             <a href="<?= URLROOT; ?>/document/<?= $document->document_id; ?>/view-document-one">
                 <?= $document->name; ?></a>

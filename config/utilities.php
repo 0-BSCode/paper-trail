@@ -28,9 +28,7 @@ function view(string $view, array $data = [], bool $protected = false): void
   // Check for view file
   if (is_readable($file)) {
     if (($view === 'Auth/signin' || $view === 'Auth/signup') && isset($_SESSION['user_id'])) {
-      echo $view;
-      echo $file;
-      // header("Location: " . URLROOT);
+      header("Location: " . URLROOT);
     } else if (
       (!$protected || ($protected && isset($_SESSION['user_id']))) &&
       (!isset($data['role']) || ($data['role']) && $data['role'] === $_SESSION['role'])

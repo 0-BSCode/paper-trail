@@ -14,7 +14,6 @@ class DocumentModel{
      * GET ALL
      * @return array
      */
-
     public function getAll(): array
     {
         $this->db->query("SELECT * FROM document");
