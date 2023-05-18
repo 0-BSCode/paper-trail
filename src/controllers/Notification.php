@@ -38,18 +38,18 @@ class Notification
         // Create notification object
         $entity_type = $this->notificationEntityTypeModel->getByActionType($action_type);
 
-        $notification_object_id = $this->notificationObjectModel->create($entity_type['notification_entity_type_id'], $entity_id);
+        $notification_object_id = $this->notificationObjectModel->createOne($entity_type['notification_entity_type_id'], $entity_id);
 
         if (gettype($notification_object_id) === 'boolean') {
             die();
         }
 
         // Create notification change
-        $this->notificationChangeModel->create($notification_object_id, $_SESSION['user_id']);
+        $this->notificationChangeModel->createOne($notification_object_id, $_SESSION['user_id']);
 
         // Create notification
         foreach ($notifier_ids as $notifier_id) {
-            $this->notificationModel->create($notification_object_id, $notifier_id);
+            $this->notificationModel->createOne($notification_object_id, $notifier_id);
         }
     }
 }

@@ -5,6 +5,8 @@ define('APPROOT', dirname(dirname(__FILE__)));
 define('URLROOT', 'http://localhost/paper-trail');
 // Site Name
 define('SITENAME', 'Paper Trail');
+// Date format
+define('DATE_FORMAT', 'M d, Y - h:i A');
 
 // CRUD Operations' Alert Messages
 define('TASK_NOT_CREATED', 'Something went wrong creating new task');

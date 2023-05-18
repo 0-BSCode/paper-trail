@@ -16,7 +16,7 @@ class NotificationChangeModel
      * CREATE
      * @return bool
      */
-    public function create($notification_object_id, $actor_id): bool
+    public function createOne($notification_object_id, $actor_id): bool
     {
         $this->db->query("INSERT INTO notification_change (`notification_object_id`, `actor_id`) VALUES (:notification_object_id, :actor_id)");
         $this->db->bind(":notification_object_id", $notification_object_id);
