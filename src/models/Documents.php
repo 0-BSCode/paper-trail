@@ -29,13 +29,12 @@ class DocumentModel{
         $this->db->query("SELECT * FROM document WHERE document_id = :document_id");
         $this->db->bind(":document_id", $document_id);
         return (array) $this->db->single();
-        
     }
+
     /**
      * CREATE
      * @return string|bool
      */
-        
     public function createDocument($user_id, $name, $link, $description): string|bool
     {
         $this->db->query("INSERT INTO document (`name`, `link`, `description`) VALUES (:name, :link, :description)");
@@ -76,7 +75,6 @@ class DocumentModel{
         if ($this->db->execute())
             return true;
         return false;
-}
     }
-
+}
 ?>

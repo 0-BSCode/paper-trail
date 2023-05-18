@@ -5,9 +5,7 @@
     <p>
         <a href = "<?= URLROOT; ?>/contact/create" button class="btn btn-success">Add a new contact</button></a>
     </p>
-
     </div>
-
     <table class="table">
     <thead>
         <tr>
