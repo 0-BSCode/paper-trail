@@ -71,7 +71,7 @@ class Ticket
     public function createTicket()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $ticket_id = $this->ticketModel->createTicket($_SESSION['user_id'], $_POST['category_id'], $_POST['title'], $_POST['description']);
+            $ticket_id = $this->ticketModel->createOne($_SESSION['user_id'], $_POST['category_id'], $_POST['title'], $_POST['description']);
 
             if (gettype($ticket_id) === 'boolean') {
                 die(TICKET_NOT_CREATED);
@@ -85,7 +85,7 @@ class Ticket
 
     public function updateTicket($params)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->updateTicket($params['id'], $_POST['category_id'], $_POST['title'], $_POST['description'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->updateOne($params['id'], $_POST['category_id'], $_POST['title'], $_POST['description'])) {
             $organization_members = $this->userModel->getByRole('organization');
             $this->notificationController->createNotification('UPDATE', $params['id'], array_column($organization_members, 'user_id'));
             header("Location: " . URLROOT . "/ticket/" . $params['id'] . "/view-ticket");
@@ -95,7 +95,7 @@ class Ticket
 
     public function updateTicketStatus($params)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->updateTicketStatus($params['id'], $_POST['status_id'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->ticketModel->updateOneStatus($params['id'], $_POST['status_id'])) {
             $ticket = $this->ticketModel->getOne($params['id']);
             $this->notificationController->createNotification('STATUS', $ticket['ticket_id'], [$ticket['user_id']]);
             header("Location: " . URLROOT . "/ticket/" . $params['id'] . "/view-ticket");

@@ -44,29 +44,34 @@
                 <p>Error fetching data.</p>
             <?php endif; ?>
         </div>
-        <div class="flex-grow-1">
-            <h2>
-                Comments
-            </h2>
-            <?php foreach ($data['comments'] as $comment): ?>
-                <form class="d-flex flex-column rounded-3 border me-5 p-3">
-                    <div class="d-flex gap-3">
-                        <p>
-                            P
-                        </p>
-                        <div class="d-flex flex-column">
-                            <p>
-                                <?= $comment->first_name . ' ' . $comment->last_name; ?>
-                            </p>
-                            <p>
-                                <?= $comment->date_created; ?>
-                            </p>
-                        </div>
-                    </div>
-                    <textarea class="form-control" name="description" id="description" rows="4"
-                        readonly><?= $comment->description; ?></textarea>
-                </form>
-            <?php endforeach; ?>
+        <div class="flex-grow-1 position-relative d-flex flex-column overflow-auto">
+            <div class="position-absolute w-100">
+                <h2>
+                    Comments
+                </h2>
+                <div class="d-flex flex-column gap-2 mb-3">
+                    <?php foreach ($data['comments'] as $comment): ?>
+                        <form class="d-flex flex-column rounded-3 border me-2 p-3">
+                            <div class="d-flex gap-3 align-items-start">
+                            <img class="mt-1" src="<?= URLROOT; ?>/public/assets/images/person-circle.svg"
+                                    alt="Profile Pic">
+                                <div class="d-flex flex-column">
+                                    <p class="mb-0">
+                                        <b>
+                                           <?= $comment->first_name . ' ' . $comment->last_name; ?>
+                                        </b>
+                                    </p>
+                                    <p>
+                                        <?= date(DATE_FORMAT, strtotime($comment->date_created)); ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <textarea class="form-control" name="description" id="description" rows="4"
+                                readonly><?= $comment->description; ?></textarea>
+                        </form>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
     </section>
 </main>

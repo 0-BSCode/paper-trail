@@ -16,7 +16,7 @@ class NotificationObjectModel
      * CREATE
      * @return string|bool
      */
-    public function create($notification_entity_type_id, $entity_id): string|bool
+    public function createOne($notification_entity_type_id, $entity_id): string|bool
     {
         $this->db->query("INSERT INTO notification_object (`notification_entity_type_id`, `entity_id`) VALUES (:notification_entity_type_id, :entity_id)");
         $this->db->bind(":notification_entity_type_id", $notification_entity_type_id);

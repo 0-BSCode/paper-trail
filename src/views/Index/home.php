@@ -39,7 +39,7 @@
                                     </a>
                                 </p>
                                 <p class="card-subtitle text-muted">
-                                    <?= $update->date_created; ?>
+                                    <?= date(DATE_FORMAT, strtotime($update->date_created)); ?>
                                 </p>
                             </div>
                         </div>
@@ -54,7 +54,9 @@
     </section>
     <section class="flex-grow-1">
         <h1>Grievances</h1>
-        <a class="btn btn-primary" type="button" href="<?= URLROOT; ?>/ticket/create">Create</a>
+        <?php if ($_SESSION['role'] === 'student'): ?>
+            <a class="btn btn-primary" type="button" href="<?= URLROOT; ?>/ticket/create">Create</a>
+        <?php endif; ?>
         <?php if ($data['ticket']): ?>
             <table class="table table-striped table-hover">
                 <thead>
@@ -104,7 +106,7 @@
                                     </th>
                                 <?php endif; ?>
                             <td>
-                                <?= $ticket->date_created; ?>
+                                <?= date(DATE_FORMAT, strtotime($ticket->date_created)); ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
