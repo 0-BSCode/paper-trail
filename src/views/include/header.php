@@ -21,8 +21,8 @@
 					<li class="list-group-item"><a href="<?= URLROOT; ?>"> Home </a></li>
 				<?php else: ?>
 					<li class="list-group-item"><a href="<?= URLROOT; ?>">Grievances</a></li>
-					<li class="list-group-item"><a href="<?= URLROOT; ?>">Contacts</a></li>
-					<li class="list-group-item"><a href="<?= URLROOT; ?>">Documents</a></li>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>/contact/view">Contacts</a></li>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>/document/view">Documents</a></li>
 				<?php endif; ?>
 			</ul>
 			<ul class="list-group d-flex flex-row list-group-flush">
