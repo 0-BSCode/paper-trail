@@ -3,18 +3,25 @@ namespace Controllers;
 
 @session_start();
 
-use Models\Database;
 use Models\DocumentModel;
 
-
-class Document{
+class Document
+{
 
     public $documentModel;
-    public function create(){
+
+    public function __construct()
+    {
+        $this->documentModel = new DocumentModel;
+    }
+
+    public function create()
+    {
         view("Documents/create");
     }
 
-    public function view(){
+    public function view()
+    {
         view("Documents/view", ["documents" => $this->getDocument()], true);
     }
 
@@ -28,13 +35,9 @@ class Document{
         view("Documents/update", ["document" => $this->getDocumentOne($params['id'])], true);
     }
 
-    public function delete(){
-        view("Document/delete", ["documents" =>$this->deleteDocument($_POST['document_id'])], true);
-    }
-
-    public function __construct()
+    public function delete()
     {
-        $this->documentModel = new DocumentModel;
+        view("Document/delete", ["documents" => $this->deleteDocument($_POST['document_id'])], true);
     }
 
     public function getDocument(): array
@@ -44,14 +47,13 @@ class Document{
 
     public function updateDocument($params)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST')
-        {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->documentModel->updateOne($params['id'], $_POST['name'], $_POST['link'], $_POST['description']);
             header("Location: " . URLROOT . "/document/" . $params['id'] . "/view-document-one");
 
         }
     }
-    
+
     public function createDocument()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -74,10 +76,5 @@ class Document{
     {
         return $this->documentModel->getOne($document_id);
     }
-
-
-
 }
-
-
 ?>
