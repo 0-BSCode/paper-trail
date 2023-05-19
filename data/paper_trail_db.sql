@@ -305,23 +305,27 @@ INSERT INTO
         `document_id`,
         `name`,
         `description`,
+        `link`,
         `date_created`
     )
 VALUES
     (
         1,
-        'Memorandum No. 7731',
-        'Memorandum regarding the suspension of classes on the days of April 12 - 16, 2023.',
+        'Republic Act No. 4200',
+        'AN ACT TO PROHIBIT AND PENALIZE WIRE TAPPING AND OTHER RELATED VIOLATIONS OF THE PRIVACY OF COMMUNICATION, AND FOR OTHER PURPOSES.',
+        'https://lawphil.net/statutes/repacts/ra1965/ra_4200_1965.html',
         current_timestamp()
     ), (
         2,
-        'Republic Act 5234',
-        'Republic Act that deems the act of wiretapping to be illegal',
+        'Republic Act No. 10173',
+        'AN ACT PROTECTING INDIVIDUAL PERSONAL INFORMATION IN INFORMATION AND COMMUNICATIONS SYSTEMS IN THE GOVERNMENT AND THE PRIVATE SECTOR, CREATING FOR THIS PURPOSE A NATIONAL PRIVACY COMMISSION, AND FOR OTHER PURPOSES',
+        'https://www.privacy.gov.ph/data-privacy-act/#:~:text=%E2%80%93%20(a)%20The%20personal%20information,against%20any%20other%20unlawful%20processing.',
         current_timestamp()
     ), (
         3,
-        'Memorandum No. 2341',
-        'Memorandum stating the stuff regarding the thingies about yes',
+        'Republic Act No. 1425',
+        'AN ACT TO INCLUDE IN THE CURRICULA OF ALL PUBLIC AND PRIVATE SCHOOLS, COLLEGES AND UNIVERSITIES COURSES ON THE LIFE, WORKS AND WRITINGS OF JOSE RIZAL, PARTICULARLY HIS NOVELS NOLI ME TANGERE AND EL FILIBUSTERISMO, AUTHORIZING THE PRINTING AND DISTRIBUTION THEREOF, AND FOR OTHER PURPOSES',
+        'https://www.officialgazette.gov.ph/1956/06/12/republic-act-no-1425/',
         current_timestamp()
     );
 
