@@ -16,7 +16,7 @@
 
 <body>
 	<?php if (isset($_SESSION['user_id'])): ?>
-		<nav class="navbar navbar-expand-md navbar-dark" style="background-color:dimgray">
+		<nav class="navbar navbar-expand-md navbar-dark bg-secondary" >
   <div class="container-fluid">
     <div class="d-flex justify-content-start">
       <?php if ($_SESSION['role'] === 'student'): ?>
