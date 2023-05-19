@@ -22,7 +22,7 @@
 				<?php else: ?>
 					<li class="list-group-item"><a href="<?= URLROOT; ?>">Grievances</a></li>
 					<li class="list-group-item"><a href="<?= URLROOT; ?>/contact/view">Contacts</a></li>
-					<li class="list-group-item"><a href="<?= URLROOT; ?>/document/view">Documents</a></li>
+					<li class="list-group-item"><a href="<?= URLROOT; ?>/document/index">Documents</a></li>
 				<?php endif; ?>
 			</ul>
 			<ul class="list-group d-flex flex-row list-group-flush">

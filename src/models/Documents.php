@@ -2,7 +2,9 @@
 namespace Models;
 
 use \Models\Database;
-class DocumentModel{
+
+class DocumentModel
+{
     private $db;
 
     public function __construct()
@@ -20,7 +22,7 @@ class DocumentModel{
         return $this->db->resultSet();
     }
 
-      /**
+    /**
      * GET BY USER ID
      * @return array
      */
@@ -35,7 +37,7 @@ class DocumentModel{
      * CREATE
      * @return string|bool
      */
-    public function createDocument($user_id, $name, $link, $description): string|bool
+    public function createOne($user_id, $name, $link, $description): string|bool
     {
         $this->db->query("INSERT INTO document (`name`, `link`, `description`) VALUES (:name, :link, :description)");
         $this->db->bind(":name", $name);
@@ -50,7 +52,7 @@ class DocumentModel{
      * DELETE
      * @return bool
      */
-    public function deleteDocument($user_id, $document_id): bool
+    public function deleteOne($user_id, $document_id): bool
     {
         $this->db->query("DELETE FROM document WHERE document_id = :document_id");
         $this->db->bind(":document_id", $document_id);
@@ -59,7 +61,7 @@ class DocumentModel{
             return true;
         return false;
     }
-    
+
     /**
      * UODATE
      * @return boolean

@@ -8,11 +8,6 @@ define('SITENAME', 'Paper Trail');
 // Date format
 define('DATE_FORMAT', 'M d, Y - h:i A');
 
-// CRUD Operations' Alert Messages
-define('TASK_NOT_CREATED', 'Something went wrong creating new task');
-define('TASK_NOT_UPDATED', 'Something went wrong updating task');
-define('TASK_NOT_DELETED', 'Something went wrong deleting task');
-
 // User CRUD
 define('USER_NOT_CREATED', 'Something went wrong creating new user');
 define('USER_NOT_FOUND', 'Something went wrong finding user');
@@ -23,3 +18,8 @@ define('TICKET_NOT_UPDATED', 'Something went wrong updating ticket');
 
 // Comment CRUD
 define('COMMENT_NOT_CREATED', 'Something went wrong creating new comment');
+
+// Document CRUD
+define('DOCUMENT_NOT_CREATED', 'Something went wrong creating new document');
+define('DOCUMENT_NOT_UPDATED', 'Something went wrong updating document');
+define('DOCUMENT_NOT_DELETED', 'Something went wrong deleting document');

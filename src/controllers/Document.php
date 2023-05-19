@@ -17,64 +17,65 @@ class Document
 
     public function create()
     {
-        view("Documents/create");
+        view("Documents/create", [], true);
     }
 
-    public function view()
+    public function index()
     {
-        view("Documents/view", ["documents" => $this->getDocument()], true);
+        view("Documents/index", ["documents" => $this->getDocuments()], true);
     }
 
-    public function viewDocumentOne($params)
+    public function viewDocument($params)
     {
-        view("Documents/viewOne", ["document" => $this->getDocumentOne($params['id'])], true);
+        view("Documents/view", ["document" => $this->getDocument($params['id'])], true);
     }
 
     public function editDocument($params)
     {
-        view("Documents/update", ["document" => $this->getDocumentOne($params['id'])], true);
+        view("Documents/update", ["document" => $this->getDocument($params['id'])], true);
     }
 
-    public function delete()
-    {
-        view("Document/delete", ["documents" => $this->deleteDocument($_POST['document_id'])], true);
-    }
-
-    public function getDocument(): array
+    public function getDocuments(): array
     {
         return $this->documentModel->getAll();
     }
 
-    public function updateDocument($params)
+    public function getDocument($document_id)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->documentModel->updateOne($params['id'], $_POST['name'], $_POST['link'], $_POST['description']);
-            header("Location: " . URLROOT . "/document/" . $params['id'] . "/view-document-one");
-
-        }
+        return $this->documentModel->getOne($document_id);
     }
 
     public function createDocument()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $document_id = $this->documentModel->createDocument($_SESSION['user_id'], $_POST['name'], $_POST['link'], $_POST['description']);
-            header("Location: " . URLROOT . "/document/view");
+            $document_id = $this->documentModel->createOne($_SESSION['user_id'], $_POST['name'], $_POST['link'], $_POST['description']);
+
+            if (gettype($document_id) === 'boolean') {
+                die(DOCUMENT_NOT_CREATED);
+            }
+
+            header("Location: " . URLROOT . "/document/index");
         }
     }
 
-    public function deleteDocument($document_id)
+    public function updateDocument($params)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $document_id = $this->documentModel->deleteDocument($_SESSION['user_id'], $_POST['document_id']);
-            header("Location: " . URLROOT . "/document/view");
-
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->documentModel->updateOne($params['id'], $_POST['name'], $_POST['link'], $_POST['description'])) {
+            header("Location: " . URLROOT . "/document/" . $params['id'] . "/view-document");
+        } else {
+            die(DOCUMENT_NOT_UPDATED);
         }
-
     }
 
-    public function getDocumentOne($document_id)
+    public function deleteDocument()
     {
-        return $this->documentModel->getOne($document_id);
+        if (
+            $_SERVER['REQUEST_METHOD'] === 'POST' && $this->documentModel->deleteOne($_SESSION['user_id'], $_POST['document_id'])
+        ) {
+            header("Location: " . URLROOT . "/document/index");
+        } else {
+            die(DOCUMENT_NOT_DELETED);
+        }
     }
 }
 ?>
