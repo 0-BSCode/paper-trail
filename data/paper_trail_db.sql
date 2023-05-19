@@ -319,7 +319,7 @@ VALUES
         2,
         'Republic Act No. 10173',
         'AN ACT PROTECTING INDIVIDUAL PERSONAL INFORMATION IN INFORMATION AND COMMUNICATIONS SYSTEMS IN THE GOVERNMENT AND THE PRIVATE SECTOR, CREATING FOR THIS PURPOSE A NATIONAL PRIVACY COMMISSION, AND FOR OTHER PURPOSES',
-        'https://www.privacy.gov.ph/data-privacy-act/#:~:text=%E2%80%93%20(a)%20The%20personal%20information,against%20any%20other%20unlawful%20processing.'
+        'https://www.privacy.gov.ph/data-privacy-act/#:~:text=%E2%80%93%20(a)%20The%20personal%20information,against%20any%20other%20unlawful%20processing.',
         current_timestamp()
     ), (
         3,
