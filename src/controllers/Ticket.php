@@ -8,6 +8,7 @@ use \Models\CategoryModel;
 use \Models\CommentModel;
 use \Models\StatusModel;
 use \Models\UserModel;
+use \Models\DocumentModel;
 use \Controllers\Notification;
 
 class Ticket
@@ -17,6 +18,7 @@ class Ticket
     private $statusModel;
     private $commentModel;
     private $userModel;
+    private $documentModel;
     private $notificationController;
 
     public function __construct()
@@ -26,6 +28,7 @@ class Ticket
         $this->commentModel = new CommentModel;
         $this->statusModel = new StatusModel;
         $this->userModel = new UserModel;
+        $this->documentModel = new DocumentModel;
         $this->notificationController = new Notification;
     }
 
@@ -41,7 +44,7 @@ class Ticket
 
     public function create()
     {
-        view("Tickets/create", $this->getCategories(), true);
+        view("Tickets/create", ["categories" => $this->getCategories(), "documents" => $this->documentModel->getAll()], true);
     }
 
     public function getTickets(): array
