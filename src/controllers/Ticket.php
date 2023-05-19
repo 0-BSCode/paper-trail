@@ -39,12 +39,12 @@ class Ticket
 
     public function editTicket($params)
     {
-        view("Tickets/update", ["ticket" => $this->getTicket($params['id']), "categories" => $this->getCategories(), "comments" => $this->getComments($params['id'])], true);
+        view("Tickets/update", ["ticket" => $this->getTicket($params['id']), "categories" => $this->getCategories(), "comments" => $this->getComments($params['id']), "documents" => $this->getDocuments()], true);
     }
 
     public function create()
     {
-        view("Tickets/create", ["categories" => $this->getCategories(), "documents" => $this->documentModel->getAll()], true);
+        view("Tickets/create", ["categories" => $this->getCategories(), "documents" => $this->getDocuments()], true);
     }
 
     public function getTickets(): array
@@ -69,6 +69,11 @@ class Ticket
     public function getComments($ticket_id): array
     {
         return $this->commentModel->getByTicket($ticket_id);
+    }
+
+    public function getDocuments(): array
+    {
+        return $this->documentModel->getAll();
     }
 
     public function createTicket()

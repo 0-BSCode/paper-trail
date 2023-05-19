@@ -58,6 +58,3 @@
     </section>
 </main>
 <?php require_once APPROOT . '/src/views/include/footer.php'; ?>
-<pre>
-<?php print_r($data['documents']); ?>
-                        </pre>

@@ -74,5 +74,33 @@
             </div>
         </div>
     </section>
+    <?php if ($data['documents']): ?>
+            <div class="position-relative mt-5">
+                <div class="position-absolute w-100">
+                    <h2>
+                        Documents
+                    </h2>
+                    <div class="d-flex flex-column gap-2 mb-3">
+                        <?php foreach ($data['documents'] as $document): ?>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <?= $document->name; ?>
+                                    </h5>
+                                    <p class="card-text">
+                                        <?= $document->description; ?>
+                                    </p>
+                                    <?php if ($document->link): ?>
+                                        <a href="#" class="card-link">
+                                            <?= $document->link; ?>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
 </main>
 <?php require_once APPROOT . '/src/views/include/footer.php'; ?>
