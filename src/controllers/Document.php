@@ -18,6 +18,16 @@ class Document{
         view("Documents/view", ["documents" => $this->getDocument()], true);
     }
 
+    public function viewDocumentOne($params)
+    {
+        view("Documents/viewOne", ["document" => $this->getDocumentOne($params['id'])], true);
+    }
+
+    public function editDocument($params)
+    {
+        view("Documents/update", ["document" => $this->getDocumentOne($params['id'])], true);
+    }
+
     public function delete(){
         view("Document/delete", ["documents" =>$this->deleteDocument($_POST['document_id'])], true);
     }
@@ -32,6 +42,16 @@ class Document{
         return $this->documentModel->getAll();
     }
 
+    public function updateDocument($params)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            $this->documentModel->updateOne($params['id'], $_POST['name'], $_POST['link'], $_POST['description']);
+            header("Location: " . URLROOT . "/document/" . $params['id'] . "/view-document-one");
+
+        }
+    }
+    
     public function createDocument()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -48,6 +68,11 @@ class Document{
 
         }
 
+    }
+
+    public function getDocumentOne($document_id)
+    {
+        return $this->documentModel->getOne($document_id);
     }
 
 
