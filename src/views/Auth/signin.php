@@ -14,7 +14,7 @@
                 else.</small>
         </div>
         <div class="d-flex flex-column align-items-center">
-            <button type="submit" class="btn btn-primary">Log in</button>
+            <button type="submit" class="btn btn-primary mb-1">Log in</button>
             <p>
                 No account yet?
                 <a href="<?= URLROOT; ?>/auth/signup">Register</a>

@@ -2,7 +2,7 @@
 <main class="h-100 d-flex flex-column px-5 justify-content-center align-items-center">
     <h1>Sign Up</h1>
     <form action="<?= URLROOT; ?>/auth/register" method="post">
-        <div class="d-flex gap-4 justify-content-between">
+        <div class="d-flex gap-4 justify-content-between mb-3">
             <div class="form-group">
                 <label for="first_name">First name</label>
                 <input type="text" class="form-control" id="first_name" aria-describedby="firstNameHelp"
@@ -14,19 +14,19 @@
                     placeholder="Enter last name" name="last_name">
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="email">Email address</label>
             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
                 name="email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                 else.</small>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" placeholder="Password" name="password">
         </div>
         <div class="d-flex flex-column align-items-center">
-            <button type="submit" class="btn btn-primary">Create Account</button>
+            <button type="submit" class="btn btn-primary mb-1">Create Account</button>
             <p>
                 Already have an account?
                 <a href="<?= URLROOT; ?>/auth/signin">Login</a>
