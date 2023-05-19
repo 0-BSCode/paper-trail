@@ -1,7 +1,7 @@
 <?php require_once APPROOT . '/src/views/include/header.php'; ?>
 
-<main>
-<h1>School Directory</h1>
+<main class = "mx-5 my-3">
+<h1>Create Contact</h1>
 <p>
     <a href="<?=URLROOT; ?>/contact/create" button class="btn btn-success">Create contact</button></a>
 </p>
