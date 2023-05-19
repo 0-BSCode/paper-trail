@@ -44,8 +44,8 @@
                                         <?= $document->description; ?>
                                     </p>
                                     <?php if ($document->link): ?>
-                                        <a href="#" class="card-link">
-                                            <?= $document->link; ?>
+                                        <a href="<?= $document->link; ?>" class="card-link">
+                                            View
                                         </a>
                                     <?php endif; ?>
                                 </div>
