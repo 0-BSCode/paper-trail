@@ -24,17 +24,18 @@
                         <?= $contact->contact_id; ?>
                     </th>
                     <td scope="row">
-                        <?php echo $contact->first_name ?>
+                        <?= $contact->first_name ?>
                     </td>
                     <td scope="row">
                         <a href="<?= URLROOT; ?>/contact/<?= $contact->contact_id; ?>/view-contact">
-                            <?= $contact->last_name; ?></a>
+                            <?= $contact->last_name; ?>
+                        </a>
                     </td>
                     <td scope="row">
-                        <?php echo $contact->email ?>
+                        <?= $contact->email ?>
                     </td>
                     <td scope="row">
-                        <?php echo $contact->contact_no ?>
+                        <?= $contact->contact_no ?>
                     </td>
                     <td>
                         <form method="post" action="<?= URLROOT; ?>/contact/delete-contact">
