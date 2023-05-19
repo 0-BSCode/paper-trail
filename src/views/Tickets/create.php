@@ -3,7 +3,7 @@
     <h1>
         Create Ticket
     </h1>
-    <section class="d-flex gap-3">
+    <section class="d-flex gap-5">
         <form action="<?= URLROOT; ?>/ticket/create-ticket" method="POST">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
