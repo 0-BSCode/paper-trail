@@ -89,7 +89,7 @@ class TicketModel
     }
 
     /**
-     * UODATE
+     * UPDATE
      * @return boolean
      */
     public function updateOne($ticket_id, $category_id, $title, $description)
