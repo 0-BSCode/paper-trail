@@ -24,12 +24,10 @@ class Auth
         view('Auth/signup');
     }
 
-
-    // CREATE new user
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && $this->userModel->createUser($_POST['first_name'], $_POST['last_name'], $_POST['email'], password_hash($_POST['password'], PASSWORD_DEFAULT)))
-            header('location: ' . URLROOT . '/auth/signup', true, 303);
+            header('location: ' . URLROOT . '/auth/signin', true, 303);
         else
             die(USER_NOT_CREATED);
     }
