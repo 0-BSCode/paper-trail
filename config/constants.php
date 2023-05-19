@@ -23,3 +23,8 @@ define('COMMENT_NOT_CREATED', 'Something went wrong creating new comment');
 define('DOCUMENT_NOT_CREATED', 'Something went wrong creating new document');
 define('DOCUMENT_NOT_UPDATED', 'Something went wrong updating document');
 define('DOCUMENT_NOT_DELETED', 'Something went wrong deleting document');
+
+// Contact CRUD
+define('CONTACT_NOT_CREATED', 'Something went wrong creating new contact');
+define('CONTACT_NOT_UPDATED', 'Something went wrong updating contact');
+define('CONTACT_NOT_DELETED', 'Something went wrong deleting contact');

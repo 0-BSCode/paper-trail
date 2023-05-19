@@ -1,46 +1,37 @@
 <?php require_once APPROOT . '/src/views/include/header.php'; ?>
-
-<main class = "mx-5 my-3">
-    <h1>School Directory</h1>
-    <p>
-        <a href = "<?= URLROOT; ?>/contact/create" button class="btn btn-success">Add a new contact</button></a>
-    </p>
-    </div>
-    <table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Contact ID</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Email Address</th>
-            <th scope="col">Contact Number</th>
-            <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php foreach($data['contacts'] as $contact){?>
-        <tr>
-            <th scope="row">
-            <?= $contact->contact_id;?>
-            </th>
-            <td scope="row"><?php echo $contact->first_name?></td>
-            <td scope="row">
-            <a href="<?= URLROOT; ?>/contact/<?= $contact->contact_id; ?>/view-contact-one">
-                <?= $contact->last_name; ?></a>
-            </td>       
-            <td scope="row"><?php echo $contact->email?></td>
-            <td scope="row"><?php echo $contact->contact_no?></td>
-            <td>
-                <form method="post" action = "<?= URLROOT; ?>/contact/delete">
-                    <input type = "hidden" name="contact_id" value="<?php echo $contact->contact_id?>">
-                    <button type = "submit" class="btn btn-sm btn-outline-danger">Delete</button>
+<main class="px-5 py-3">
+    <h1>
+        View Contact
+    </h1>
+    <section class = "d-flex gap-5">
+    <div class="flex-grow-1 position-relative">
+            <?php if ($data): ?>
+                <form action="<?= URLROOT; ?>/contact/<?= $data['contact']['contact_id']; ?>/view-contactOne" method="POST">
+                    <div class="mb-3 w-50">
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Juan de la Cruz"
+                            disabled value="<?= $data['contact']['first_name']; ?>">
+                    </div>
+                    <div class="mb-3 w-50">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Juan de la Cruz"
+                            disabled value="<?= $data['contact']['last_name']; ?>">
+                    </div>
+                    <div class="mb-3 w-50">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" name="email" class="form-control" id="email" placeholder="Juan de la Cruz"
+                            disabled value="<?= $data['contact']['email']; ?>">
+                    </div>
+                    <div class="mb-3 w-50">
+                        <label for="email" class="form-label">Contact Number</label>
+                        <input type="text" name="contact_no" class="form-control" id="contact_no" placeholder="Juan de la Cruz"
+                            disabled value="<?= $data['contact']['contact_no']; ?>">
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href = "<?= URLROOT; ?>/contact/<?= $data['contact']['contact_id']; ?>/edit-contact" button type="submit" button class="btn btn-success">Update</button></a>
+                    </div>
                 </form>
-          </td>
-    </td>
-
-        </tr>
-    <?php }?>
-    </tbody>
-    </table>
+            <?php endif; ?>
+        </div>
+    </section>
 </main>
-<?php require_once APPROOT . '/src/views/include/footer.php'; ?>
