@@ -29,7 +29,7 @@ class TicketModel
                         ON t.user_id = u.user_id
                         INNER JOIN status s
                         ON t.status_id = s.status_id
-                        ORDER BY t.ticket_id ASC"
+                        ORDER BY t.date_created DESC"
         );
         return $this->db->resultSet();
     }
